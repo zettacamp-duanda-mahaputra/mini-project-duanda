@@ -5,7 +5,13 @@ mat-toolbar{
   align-items: center;
   justify-content: flex-end;
   background-color: white;
-  background: transparent;
+ 
+}
+
+.name{
+  font-family: 'Righteous', cursive;
+  font-weight: bolder;
+  font-size: larger;
 }
 
 

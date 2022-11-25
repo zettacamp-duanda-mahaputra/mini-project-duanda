@@ -1,14 +1,10 @@
 <mat-toolbar>
-  <a [routerLink]="['']">
-    <img
-      src="https://cdn.pixabay.com/photo/2021/05/25/02/03/restaurant-6281067_1280.png"
-      alt="me"
-    />
-  </a>
+  <p class="name">Warung Mba Atik</p>
   
   <div class="wrap-left"></div>
 
   <div class="wrap-right">
+    <button mat-button [routerLink]="['Homepage']" routerLinkActive="active">Home</button>
     <button mat-button [routerLink]="['About']" routerLinkActive="active">About</button>
     <button mat-button [routerLink]="['Menu']" routerLinkActive="active" *ngIf="role == 'User'|| 'Admin'">Menu</button>
     <button mat-button [routerLink]="['MenuManagement']" routerLinkActive="active" *ngIf="role == 'Admin'">Menu Management</button>
