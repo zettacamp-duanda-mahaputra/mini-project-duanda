@@ -1,0 +1,30 @@
+.example-card {
+  width: 400px;
+  height: 500px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  margin: 10px;
+  display: flex;
+  padding: 30px;
+  flex-direction: column;
+  border-radius: 2rem;
+}
+
+.wrap-img{
+  width: 350px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  background-color: white;
+}
+
+img{
+  width: 110%;
+  margin:0;
+  position: absolute;
+}
+
+.qty{
+  width: 80px;
+  
+}

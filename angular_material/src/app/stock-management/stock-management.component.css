@@ -1,0 +1,21 @@
+.wrap{
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding-bottom: 60px;
+}
+
+table{
+  width: 1000px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.action td{
+  text-align: center;
+}
+
+.btn-open{
+  margin-right: 700px;
+}
+

@@ -1,0 +1,36 @@
+<!-- <div *ngFor="let item of items">
+    <p>{{item?.total_price}}</p>
+  <div *ngFor="let menu of item?.menu">
+    <p>{{menu?.amount}}</p>
+</div>
+</div> -->
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [fixedLayout]="true">
+
+    <ng-container matColumnDef="order_date">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.order_date | date:'fullDate'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="recipe_name">
+      <th mat-header-cell *matHeaderCellDef> name </th>
+      <td mat-cell *matCellDef="let element">
+        <p *ngFor="let recipe of element.menu">  {{recipe.recipe_id.recipe_name}}</p>
+    </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="total_price">
+      <th mat-header-cell *matHeaderCellDef> Total Price </th>
+      <td mat-cell *matCellDef="let element"> {{element.total_price}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="order_status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.order_status}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <button mat-raised-button color="warn" (click)="onClose()">Close</button>

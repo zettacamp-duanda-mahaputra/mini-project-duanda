@@ -1,0 +1,28 @@
+<h1>{{carts.recipe_name}}</h1>
+<p>Available: {{carts.available}}</p>
+<img [src]="carts.image" alt="me">
+<p>{{carts.price | currency:'IDR '}}</p>
+<p>{{carts.description}}</p>
+<div class="flex">
+  <p>Ingredients:</p>
+  <p>{{bismillahIngredients}}</p>
+</div>
+<div [formGroup]="myForm">
+  <mat-form-field class="qty" >
+    <mat-label>Amount</mat-label>
+    <input type="number" min="1" matInput formControlName="amount" />
+    <mat-error *ngIf="myForm.get('amount')?.errors?.['max']">Out of Stock</mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Note</mat-label>
+    <input type="text" matInput formControlName="note" />
+  </mat-form-field>
+</div>
+<br>
+<button class="cancel" mat-raised-button color="warn" (click)="onCancel()">
+  Cancel
+</button>
+<button mat-dialog-close mat-raised-button color="primary" (click)="onSubmit()">
+  <mat-icon>add</mat-icon>Add to Cart
+</button>

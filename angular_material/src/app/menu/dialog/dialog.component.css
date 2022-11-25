@@ -1,0 +1,13 @@
+img{
+  width: 200px;
+  height: 100px;
+}
+
+.flex {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cancel{
+  margin-right: 10px;
+}

@@ -1,0 +1,9 @@
+<h1 *ngIf="!carts?.menu?.length"> No Transaction</h1>
+<app-card *ngFor="let item of carts?.menu" [items]="item"></app-card>
+<div class="total">
+  <h3>Total: {{carts?.total_price | currency:'Rp '}}</h3>
+  <button mat-raised-button [disabled]="!carts?.menu?.length" color="accent" (click)="onCheckOut()">Checkout</button>
+  <br>
+</div>
+<div class="history"><button mat-raised-button color="primary" (click)="openDialog(carts)">History</button></div>
+

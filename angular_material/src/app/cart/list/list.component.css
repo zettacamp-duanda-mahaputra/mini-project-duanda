@@ -1,0 +1,19 @@
+.total{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-right: 50px;
+}
+
+.total h3{
+  margin-right: 20px;
+}
+
+.history{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 5px;
+  margin-right: 50px;
+}

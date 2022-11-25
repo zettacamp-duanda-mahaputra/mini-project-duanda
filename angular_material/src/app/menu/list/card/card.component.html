@@ -1,0 +1,17 @@
+<mat-card class="example-card">
+  <div class="wrap-img">
+    <img mat-card-image [src]="items.image" alt="me" />
+  </div>
+  <mat-card-title>{{ items.recipe_name }}</mat-card-title>
+  <mat-card-subtitle>Available: {{items.available}}</mat-card-subtitle>
+  <mat-card-content>
+    <p>
+      {{ items.price | currency: "IDR " }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button [disabled]="items.available === 0" mat-raised-button color="warn" (click)="openDialog(items)">
+      Details
+    </button>
+  </mat-card-actions>
+</mat-card>

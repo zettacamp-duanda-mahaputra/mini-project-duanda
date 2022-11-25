@@ -1,0 +1,41 @@
+.img1{
+  width: 100%;
+  height: 700px;
+  background-image: url('https://www.chocolatenation.be/sites/default/files/styles/og_image/public/images/restaurant-Octave-interieur-2.jpg?h=9e6dfa32&itok=AOEzGbAT');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.contact{
+  width: 100%;
+  display: flex;
+}
+
+.card{
+  width: 50%;
+  border: 4px solid black;
+  height: 300px;
+  margin: 20px;
+  border-radius: 1rem;
+  padding-left: 20px;
+  box-shadow: 5px 5px 10px black;
+}
+
+.socmed{
+  display: flex;
+  flex-direction: column;
+}
+
+.socmed .mb{
+  margin-bottom: 40px;
+}
+
+.socmed img{
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.title-contact{
+  margin-bottom: 40px;
+}

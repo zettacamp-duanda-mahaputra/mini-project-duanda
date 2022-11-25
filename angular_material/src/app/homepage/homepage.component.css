@@ -1,0 +1,45 @@
+.wrap-home{
+  background-color: black;
+}
+
+.home {
+  background-image: url('https://www.chocolatenation.be/sites/default/files/styles/og_image/public/images/restaurant-Octave-interieur-2.jpg?h=9e6dfa32&itok=AOEzGbAT');
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.8;
+}
+
+.wrap-h2{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 700px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+
+h2{
+  margin: 0;
+  border: 5px solid black;
+  padding: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: xx-large;
+}
+
+button{
+  background-color: black;
+  color: white;
+}
+
