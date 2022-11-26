@@ -5,7 +5,7 @@ import { HttpLink } from 'apollo-angular/http';
 import { HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 
-const uri = 'https://a211-114-79-32-135.ap.ngrok.io/graphql';
+const uri = 'https://91e4-125-163-208-221.ap.ngrok.io/graphql';
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 

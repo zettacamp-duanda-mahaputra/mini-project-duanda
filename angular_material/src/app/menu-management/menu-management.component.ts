@@ -118,6 +118,22 @@ export class MenuManagementComponent implements OnInit {
 
   onDelete(id: any) {
     this.menuManagementService.delete(id).subscribe(() => {
+      Swal.fire({
+        title: 'Are you sure?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Deleted!',
+            'Menu has been deleted.',
+            'success'
+          )
+        }
+      })
       this.getAll();
     });
   }

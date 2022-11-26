@@ -26,9 +26,25 @@ export class AppComponent implements OnInit {
 
   isLogout() {
    this.authService.clearUser()
-    this.router.navigate(['Homepage']).then(() => {
-      window.location.reload();
-    });
+   Swal.fire({
+    title: 'Are you sure?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, logout it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Logout!',
+        'You has been logout.',
+        'success'
+      )
+      this.router.navigate(['Homepage']).then(() => {
+        window.location.reload();
+      });
+    }
+  }) 
   }
 
   onCart() {

@@ -95,6 +95,11 @@ export class StockManagementComponent implements OnInit {
           }).then(() => {
             this.getAll();
           });
+        }, err=>{
+          Swal.fire({
+            icon: 'error',
+            text: 'stock name already registered'
+          })
         });
       }
     });
@@ -102,6 +107,22 @@ export class StockManagementComponent implements OnInit {
 
   onDelete(id: any) {
     this.stockManagementService.deleteIngredient(id).subscribe(() => {
+      Swal.fire({
+        title: 'Are you sure?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Deleted!',
+            'Stock has been deleted.',
+            'success'
+          )
+        }
+      })
       this.getAll();
     });
   }
