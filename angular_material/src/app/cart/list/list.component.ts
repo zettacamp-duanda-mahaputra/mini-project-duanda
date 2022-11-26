@@ -46,7 +46,7 @@ export class ListComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title:'Failed',
-            text: 'Out of Stock: ' + namaMenu
+            text: 'Not Available: ' + namaMenu
           })
           
         }else{

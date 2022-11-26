@@ -3,7 +3,7 @@
     <img [src]="items?.recipe_id?.image" alt="me" />
     <div>
       <mat-card-title>{{ items?.recipe_id?.recipe_name }}</mat-card-title>
-      <mat-card-subtitle>{{ items?.recipe_id?.available }}</mat-card-subtitle>
+      <mat-card-subtitle>Available: {{ items?.recipe_id?.available }}</mat-card-subtitle>
       <mat-card-subtitle>{{ items?.recipe_id?.price | currency: "Rp " }}</mat-card-subtitle>
     </div>
   </div>
@@ -11,8 +11,9 @@
     <div [formGroup]="myForm">
       <mat-form-field class="qty">
         <mat-label>Amount</mat-label>
-        <input type="number" min="1" matInput formControlName="amount" />
-        <mat-error *ngIf="myForm.get('amount')?.errors?.['max']">Amount more than Available</mat-error>
+        <input type="number" min="0" matInput formControlName="amount" />
+        <mat-error *ngIf="myForm.get('amount')?.errors?.['max']">Amount must be smaller than available</mat-error>
+        <mat-error *ngIf="myForm.get('amount')?.errors?.['min']">Amount must be greater than zero</mat-error>
       
       </mat-form-field>
       <mat-form-field>

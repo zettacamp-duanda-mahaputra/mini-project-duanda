@@ -72,14 +72,14 @@ export class DialogComponent implements OnInit {
                 console.log(value);
 
                 this.cartService.add(value).subscribe({
-                    next: (data) => {
+                    next: (data:any) => {
                         Swal.fire({
                             icon: 'success',
                             title: 'Success',
                             text: 'Menu added',
                         });
                     },
-                    error: (error) => {
+                    error: (error:any) => {
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',

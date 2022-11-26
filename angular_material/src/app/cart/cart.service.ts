@@ -37,6 +37,11 @@ export class CartService {
 
   add(data: any) {
     console.log(data.note);
+    if(data.note == null){
+      data.note = ""
+    }else{
+      return data.note
+    }
 
     return this.apollo.mutate({
       mutation: gql`

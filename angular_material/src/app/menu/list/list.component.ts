@@ -11,9 +11,7 @@ export class ListComponent implements OnInit {
   constructor(private menuService:MenuService) { }
 
   ngOnInit(): void {
-    this.getAll()
-    console.log('alala');
-    
+    this.getAll()    
   }
 
   getAll(){

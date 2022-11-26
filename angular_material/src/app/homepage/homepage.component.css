@@ -1,9 +1,13 @@
 .wrap-card{
   display: flex;
+  position: absolute;
+  z-index: -1;
+  top: 0;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
+  padding-top: 150px;
 }
 
 .card{
@@ -24,7 +28,7 @@
 }
 
 .s1{
-  margin-left: 50px;
+  padding-left: 50px;
 }
 
 .btn{

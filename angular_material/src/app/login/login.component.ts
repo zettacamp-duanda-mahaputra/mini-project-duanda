@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
 
   successHandler(data: any) {
     this.authService.setUser(data.data.loginUser)
+
     Swal.fire({
       icon: 'success',
       title: 'Success',
@@ -46,5 +47,14 @@ export class LoginComponent implements OnInit {
   errorHandler(error: any) {
     Swal.fire('Failed', 'Not Completed', 'error');
 
+  }
+
+  onShow(value:any){
+    let password = document.getElementById('password') as HTMLInputElement
+    if(value.checked == true){
+      password.type = 'text'
+    }else{
+      password.type = 'password'
+    }
   }
 }

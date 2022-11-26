@@ -14,31 +14,34 @@ export class CardComponent implements OnInit {
 
   amount: any
   avail:any
+  myForm:any = FormGroup
   
-
-    myForm = new FormGroup({
-      amount: new FormControl(null, [Validators.required, Validators.min(1)]),
-      note: new FormControl(null),
-    });
+    
+   
 
  
 
   constructor(private cartService: CartService, private listComponent: ListComponent) { }
 
   ngOnInit(): void {
+    const a = {
+      available: this.items?.recipe_id?.available,
+    };
+    this.avail = a.available;
+    console.log(this.avail);
+    this.form()
     console.log(this.items);
     this.myForm.patchValue(this.items)
 
     this.amountChange()
-    this.noteChange()
+    this.noteChange() 
+  }
 
-    const a = {
-      available: this.items.available,
-    };
-    this.avail = a.available;
-    console.log(this.avail);
-    
-
+  form(){
+    this.myForm = new FormGroup({
+      amount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this.avail)]),
+      note: new FormControl(null),
+    });
   }
 
   amountChange() {

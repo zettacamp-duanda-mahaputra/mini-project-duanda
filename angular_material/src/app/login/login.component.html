@@ -8,11 +8,14 @@
       </mat-form-field>
       <mat-form-field appearance="legacy">
         <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="password" />
+        <input type="password" id="password" matInput formControlName="password" />
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="onSubmit()">
-        submit
-      </button>
+      <mat-checkbox (change)="onShow($event)">Show Password</mat-checkbox>
+      <div class="btn">
+        <button mat-raised-button color="primary" (click)="onSubmit()">
+          LOGIN
+        </button>
+      </div>
     </form>
   </div>
   

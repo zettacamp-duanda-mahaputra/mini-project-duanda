@@ -39,3 +39,12 @@
 .card .head{
   margin-top: 100px;
 }
+
+button{
+  width: 100px;
+}
+
+.btn{
+  display: flex;
+  justify-content: flex-start;
+}

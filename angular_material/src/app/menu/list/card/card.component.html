@@ -3,14 +3,36 @@
     <img mat-card-image [src]="items.image" alt="me" />
   </div>
   <mat-card-title>{{ items.recipe_name }}</mat-card-title>
-  <mat-card-subtitle>Available: {{items.available}}</mat-card-subtitle>
+  <mat-card-subtitle>Available: {{ items.available }}</mat-card-subtitle>
   <mat-card-content>
     <p>
       {{ items.price | currency: "IDR " }}
     </p>
   </mat-card-content>
+
   <mat-card-actions>
-    <button [disabled]="items.available === 0" mat-raised-button color="warn" (click)="openDialog(items)">
+    <div [formGroup]="myForm">
+      <mat-form-field class="qty">
+        <mat-label>Amount</mat-label>
+        <input type="number" min="1" matInput formControlName="amount" />
+        <mat-error *ngIf="myForm.get('amount')?.errors?.['max']"
+          >must be smaller than available</mat-error
+        >
+        <mat-error *ngIf="myForm.get('amount')?.errors?.['min']"
+          >must be greater than 0</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <br />
+    <button class="add" mat-raised-button color="accent" (click)="onSubmit()">
+      <mat-icon>add</mat-icon> Add To Cart
+    </button>
+    <button
+      [disabled]="items.available === 0"
+      mat-raised-button
+      color="primary"
+      (click)="openDialog(items)"
+    >
       Details
     </button>
   </mat-card-actions>
