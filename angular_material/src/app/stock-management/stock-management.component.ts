@@ -21,15 +21,15 @@ export class StockManagementComponent implements OnInit {
   filteredValues: any = { status: '' };
   availableSources: Dropdown[] = Drop;
 
-  pageSize:number = 10
-  pageIndex:number = 0
-  itemLength:any
-  pageEvent:any
+  pageSize: number = 10
+  pageIndex: number = 0
+  itemLength: any
+  pageEvent: any
 
   constructor(
     private stockManagementService: StockManagementService,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getAll();
@@ -57,7 +57,7 @@ export class StockManagementComponent implements OnInit {
 
   getAll() {
     const pagination = {
-      limit: this.pageSize ? this.pageSize : 5, 
+      limit: this.pageSize ? this.pageSize : 5,
       page: this.pageIndex ? this.pageIndex : 0
     }
     this.stockManagementService.getAllIngredients(pagination).subscribe((data: any) => {
@@ -95,7 +95,7 @@ export class StockManagementComponent implements OnInit {
           }).then(() => {
             this.getAll();
           });
-        }, err=>{
+        }, err => {
           Swal.fire({
             icon: 'error',
             text: 'stock name already registered'
@@ -106,33 +106,33 @@ export class StockManagementComponent implements OnInit {
   }
 
   onDelete(id: any) {
-    this.stockManagementService.deleteIngredient(id).subscribe(() => {
-      Swal.fire({
-        title: 'Are you sure?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
-        if (result.isConfirmed) {
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.stockManagementService.deleteIngredient(id).subscribe(() => {
           Swal.fire(
             'Deleted!',
             'Stock has been deleted.',
             'success'
           )
-        }
-      })
+        })
+      }
       this.getAll();
-    });
+    })
   }
 
-  indexingPage(data:any){
+  indexingPage(data: any) {
     console.log(data);
     this.pageIndex = data.pageIndex
     this.pageSize = data.pageSize
-    
+
     this.getAll()
-    
+
   }
 }

@@ -27,15 +27,15 @@ export class MenuManagementComponent implements OnInit {
   filteredValues: any = { status: '' };
   availableSources: Dropdown[] = Drop;
 
-  pageSize:number = 6
-  pageIndex:number = 0
-  itemLength:any
-  pageEvent:any
+  pageSize: number = 6
+  pageIndex: number = 0
+  itemLength: any
+  pageEvent: any
 
   constructor(
     private menuManagementService: MenuManagementService,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getAll();
@@ -60,11 +60,11 @@ export class MenuManagementComponent implements OnInit {
   }
 
   getAll() {
-    this.menuManagementService.get(this.pageSize,this.pageIndex).subscribe((data: any) => {
+    this.menuManagementService.get(this.pageSize, this.pageIndex).subscribe((data: any) => {
       this.dataSource.data = data.data;
-      
+
       this.itemLength = data.paginator.total_items
-      
+
     });
   }
 
@@ -81,7 +81,7 @@ export class MenuManagementComponent implements OnInit {
       console.log(result);
 
       if ('_id' in result) {
-        
+
         this.menuManagementService
           .update(result, result._id)
           .subscribe((data) => {
@@ -111,40 +111,41 @@ export class MenuManagementComponent implements OnInit {
     console.log(event);
     const status = event.checked ? 'publish' : 'unpublish';
 
-    this.menuManagementService.updateStatus(status, element._id).subscribe(()=>{
+    this.menuManagementService.updateStatus(status, element._id).subscribe(() => {
       this.getAll()
     });
   }
 
   onDelete(id: any) {
-    this.menuManagementService.delete(id).subscribe(() => {
-      Swal.fire({
-        title: 'Are you sure?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
-        if (result.isConfirmed) {
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.menuManagementService.delete(id).subscribe(() => {
           Swal.fire(
             'Deleted!',
             'Menu has been deleted.',
             'success'
           )
-        }
-      })
-      this.getAll();
-    });
+        })
+        this.getAll();
+      }
+    })
+
   }
 
-  indexingPage(data:any){
+  indexingPage(data: any) {
     console.log(data);
     this.pageIndex = data.pageIndex
     this.pageSize = data.pageSize
-    
+
     this.getAll()
-    
+
   }
 
 
