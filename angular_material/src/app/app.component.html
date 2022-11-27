@@ -4,18 +4,23 @@
   <div class="wrap-left"></div>
 
   <div class="wrap-right">
-    <button mat-button [routerLink]="['Homepage']" routerLinkActive="active">Home</button>
-    <button mat-button [routerLink]="['About']" routerLinkActive="active">About</button>
-    <button mat-button [routerLink]="['Menu']" routerLinkActive="active" *ngIf="role == 'User'|| 'Admin'">Menu</button>
-    <button mat-button [routerLink]="['MenuManagement']" routerLinkActive="active" *ngIf="role == 'Admin'">Menu Management</button>
-    <button mat-button [routerLink]="['StockManagement']" routerLinkActive="active" *ngIf="role == 'Admin'">Stock Management</button>
-    <button mat-button [routerLink]="['Login']" routerLinkActive="active" *ngIf="!isLogin">Login</button>
+    <button mat-button [routerLink]="['Homepage']" routerLinkActive="active">{{'app.home' | translate}}</button>
+    <button mat-button [routerLink]="['About']" routerLinkActive="active">{{'app.about' | translate}}</button>
+    <button mat-button [routerLink]="['Menu']" routerLinkActive="active" *ngIf="role == 'User'|| 'Admin'">{{'app.menu' |translate}}</button>
+    <button mat-button [routerLink]="['MenuManagement']" routerLinkActive="active" *ngIf="role == 'Admin'">{{'app.menu-management' | translate}}</button>
+    <button mat-button [routerLink]="['StockManagement']" routerLinkActive="active" *ngIf="role == 'Admin'">{{'app.stock-management' | translate}}</button>
+    <button mat-button [routerLink]="['Login']" routerLinkActive="active" *ngIf="!isLogin">{{'app.login' | translate}}</button>
     <button mat-button [routerLink]="['Cart']">
       <mat-icon>add_shopping_cart</mat-icon>
     </button>
   </div>
   <button mat-button *ngFor="let menu of menus" [routerLink]="[menu?.routing]">{{ menu?.page }}</button>
-  <button mat-button *ngIf="isLogin" (click)="isLogout()">Logout</button>
+  <button mat-button *ngIf="isLogin" (click)="isLogout()">{{'app.logout' | translate}}</button>
+  <div class="lang">
+    <span class="fi fi-us"></span>
+    <mat-slide-toggle color="primary" (change)="setLang($event)"></mat-slide-toggle>
+    <span class="fi fi-id"></span>
+  </div>
 </mat-toolbar>
 
 <div>

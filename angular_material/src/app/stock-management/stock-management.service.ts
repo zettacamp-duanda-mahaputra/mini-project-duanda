@@ -8,11 +8,11 @@ import { map } from 'rxjs'
 export class StockManagementService {
   constructor(private apollo: Apollo) {}
 
-  getAllIngredients(paginator?:any) {
+  getAllIngredients(paginator?:any,match?: any) {
     return this.apollo.query({
       query: gql`
-        query GetAllIngredients($paginator:paginator){
-          GetAllIngredients(paginator: $paginator) {
+        query GetAllIngredients($paginator:paginator, $match: ingredientsInput){
+          GetAllIngredients(paginator: $paginator, match: $match) {
             data {
               _id
               name
@@ -24,7 +24,7 @@ export class StockManagementService {
             }
           }
         }
-      `,fetchPolicy:'network-only', variables: {paginator}
+      `,fetchPolicy:'network-only', variables: {paginator, match}
     }).pipe(map((result:any)=>{
       return result.data.GetAllIngredients
     }))

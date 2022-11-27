@@ -10,10 +10,19 @@
   margin-right: 20px;
 }
 
+.total{
+  padding-right: 10px;
+}
+
 .history{
   display: flex;
   align-items: center;
   justify-content: flex-end;
   margin-top: 5px;
-  margin-right: 50px;
+  margin-right: 60px;
 }
+
+.history button{
+  width: 90px;
+}
+

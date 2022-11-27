@@ -41,3 +41,22 @@ button.active{
   color: rgb(255, 255, 255) !important; 
   background-color: rgb(129, 56, 161);
 }
+
+.fi{
+  box-shadow: 1px 1px 1px grey;
+}
+
+.fi-us{
+  margin-right: 4px;
+}
+
+.fi-id{
+  margin-left: 4px;
+}
+
+.lang{
+  border: 2px black solid;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 2rem;
+}

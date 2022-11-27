@@ -1,6 +1,6 @@
 <h3>Stock Management</h3>
 <div class="wrap">
-  <div class="form" [formGroup]="myForm">
+  <form class="form" [formGroup]="myForm">
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
       <input [disabled]="3 < 4" formControlName="name" matInput />
@@ -10,7 +10,7 @@
       <mat-label>Stock</mat-label>
       <input type="number" matInput formControlName="stock" />
     </mat-form-field>
-  </div>
+  </form>
 
   <div mat-dialog-actions align="end">
     <button mat-raised-button color="warn" (click)="onCancel()" cdkFocusInitial>Cancel</button>

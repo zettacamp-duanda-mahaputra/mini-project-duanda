@@ -1,0 +1,22 @@
+{
+    "app": {
+        "home": "Beranda",
+        "about": "Tentang",
+        "menu": "Menu",
+        "menu-management": "Manajemen Menu",
+        "stock-management": "Manajemen Bahan",
+        "cart": "Keranjang",
+        "login": "Masuk",
+        "logout": "Keluar"
+    },
+    "home": {
+        "btn-menu": "Lihat Menu",
+        "btn-order": "Pesan Sekarang"
+    },
+    "login": {
+        "email": "Surel",
+        "password": "Kata Sandi",
+        "login": "Masuk",
+        "show-password": "Tampilkan Sandi"
+    }
+}

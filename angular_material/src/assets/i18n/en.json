@@ -1,0 +1,22 @@
+{
+    "app": {
+        "home": "Home",
+        "about": "About",
+        "menu": "Menu",
+        "menu-management": "Menu Management",
+        "stock-management": "Stock Management",
+        "cart": "Cart",
+        "login": "Login",
+        "logout": "Logout"
+    },
+    "home": {
+        "btn-menu": "See Menu",
+        "btn-order": "Order Now"
+    },
+    "login": {
+        "email": "Email",
+        "password": "Password",
+        "login": "Login",
+        "show-password": "Show Password"
+    }
+}

@@ -1,13 +1,10 @@
 .wrap-card{
   display: flex;
-  position: absolute;
-  z-index: -1;
   top: 0;
   justify-content: center;
   align-items: flex-start;
   width: 100vw;
-  height: 100vh;
-  padding-top: 150px;
+  padding-top: 80px;
 }
 
 .card{
@@ -28,13 +25,35 @@
 }
 
 .s1{
-  padding-left: 50px;
+  padding-left: 110px;
 }
 
 .btn{
   display: flex;
   gap: 15px;
 }
+
+.img{
+  padding-left: 100px;
+  padding-right: 40px;
+}
+
+.wrapper2{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.card2{
+  width: calc((100%/3) - 100px);
+  border: 1px solid black;
+  height: 250px;
+  border-radius: 1rem;
+}
+
+
 
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
 import { AuthService } from './auth.service';
 
@@ -13,9 +14,10 @@ export class AppComponent implements OnInit {
   menus: any = [];
   isLogin: any
   role: any;
+  selectedLang:any
   
 
-  constructor(private router: Router, private authService:AuthService) {}
+  constructor(private router: Router, private authService:AuthService, private translate:TranslateService) {}
 
   ngOnInit() {
     this.role = this.authService.getRole()
@@ -53,5 +55,14 @@ export class AppComponent implements OnInit {
       title: 'Error',
       text: 'Cant Acces Cart Before Login',
     });
+  }
+
+  setLang(event:any){
+    if(event.checked == true){
+      this.selectedLang = 'id'
+    }else{
+      this.selectedLang = 'en'
+    }
+    this.translate.use(this.selectedLang)
   }
 }

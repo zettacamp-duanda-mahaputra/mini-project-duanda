@@ -72,7 +72,8 @@ export class CardComponent implements OnInit {
             icon: 'success',
             title: 'Success',
             text: 'Menu added',
-          });
+          })
+          this.myForm.reset()
         })
       }
     }else{
