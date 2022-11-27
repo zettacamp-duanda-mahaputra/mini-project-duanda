@@ -29,3 +29,10 @@ img{
   
 }
 
+.sold{
+  position: absolute;
+  top: 0;
+  padding: 30px;
+  z-index: 1;
+  
+}

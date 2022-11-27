@@ -35,7 +35,7 @@ export class MenuService {
             }
           }
         }
-      `,
+      `,fetchPolicy:'network-only'
     });
   }
 

@@ -1,5 +1,6 @@
 <mat-card class="example-card">
   <div class="wrap-img">
+    <img class="sold" *ngIf="items.available === 0" src="https://www.freeiconspng.com/thumbs/sold-out-png/sold-out-png-31.png" alt="me">
     <img mat-card-image [src]="items.image" alt="me" />
   </div>
   <mat-card-title>{{ items.recipe_name }}</mat-card-title>
@@ -24,7 +25,7 @@
       </mat-form-field>
     </div>
     <br />
-    <button class="add" mat-raised-button color="accent" (click)="onSubmit()">
+    <button class="add" mat-raised-button color="accent" [disabled]="items.available === 0" (click)="onSubmit()">
       <mat-icon>add</mat-icon> Add To Cart
     </button>
     <button
