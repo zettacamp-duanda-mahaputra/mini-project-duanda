@@ -26,7 +26,15 @@ export class HomepageService {
     });
   }
 
-
+  saveTokenFCM(token: any) {
+    return this.apollo.query({
+      query: gql`
+      mutation SaveTokenFCM($token: String) {
+      saveTokenFCM(token: $token)
+    }
+      `, fetchPolicy: 'network-only', variables: {token }
+    })
+  }
 
 
 }
