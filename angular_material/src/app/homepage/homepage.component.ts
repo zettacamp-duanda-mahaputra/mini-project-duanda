@@ -24,7 +24,8 @@ export class HomepageComponent implements OnInit {
   }
 
   requestPermission() {
-
+    console.log('request permission function');
+    
     const messaging = getMessaging();
 
     getToken(messaging, { vapidKey: environment.firebase.vapidKey }).then((currentToken) => {
