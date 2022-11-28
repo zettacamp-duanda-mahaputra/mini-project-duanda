@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomepageService } from './homepage.service';
 
 @Component({
   selector: 'app-homepage',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  items: any
+
+  constructor(private homeService: HomepageService) { }
 
   ngOnInit(): void {
+    this.homeService.get().subscribe((data: any) => {
+      this.items = data?.data?.getAllRecipes.data
+      console.log(this.items);
+      
+      
+    })
   }
 
 }

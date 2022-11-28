@@ -19,13 +19,18 @@
     </div>
   </div>
   <div class="card img">
-    <img class="img" src="https://png.pngtree.com/png-clipart/20220729/ourmid/pngtree-bubur-candil-ubi-ungu-tradisional-food-indonesia-png-image_6092099.png" alt="me">
+    <div class="best" *ngFor="let item of items">
+      <h2><span class="best1">Our Best Menu: </span> <span class="best2">{{item?.recipe_name}}</span></h2>
+      <img class="image" [src]="item?.image" alt="me">
+    </div>
   </div>
 </div>
 
 
 <div class="wrapper2">
-  <div class="card2"></div>
+  <div class="card2">
+    <img [src]="" alt="me">
+  </div>
   <div class="card2"></div>
   <div class="card2"></div>
 </div>

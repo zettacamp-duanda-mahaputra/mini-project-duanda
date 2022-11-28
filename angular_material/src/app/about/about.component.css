@@ -10,6 +10,7 @@
 .contact{
   width: 100%;
   display: flex;
+  background-color: #eaeaea;
 }
 
 .card{

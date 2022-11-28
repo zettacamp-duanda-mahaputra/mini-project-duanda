@@ -26,3 +26,8 @@
   width: 90px;
 }
 
+h1 {
+  width: fit-content;
+  margin: auto;
+  margin-top: 40px;
+}

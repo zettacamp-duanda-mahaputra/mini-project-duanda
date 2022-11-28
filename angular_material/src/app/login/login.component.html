@@ -10,7 +10,7 @@
         <mat-label>Password</mat-label>
         <input type="password" id="password" matInput formControlName="password" />
       </mat-form-field>
-      <mat-checkbox (change)="onShow($event)">Show Password</mat-checkbox>
+      <mat-checkbox class="show" (change)="onShow($event)">Show Password</mat-checkbox>
       <div class="btn">
         <button mat-raised-button color="primary" (click)="onSubmit()">
           Login

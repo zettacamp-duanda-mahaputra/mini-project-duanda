@@ -6,15 +6,14 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class MenuManagementService {
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) { }
 
-  get(limit:any, page:any) {
-    console.log(limit, page);
+  get(limit: any, page: any) {
     
     return this.apollo
       .query({
         query: gql`
-          query getAllRecipes($limit: Int, $page: Int){
+          query getAllRecipes($limit:Int, $page:Int){
             getAllRecipes(paginator: { limit: $limit, page: $page }) {
               data {
                 _id
@@ -24,6 +23,7 @@ export class MenuManagementService {
                 image
                 description
                 status
+                highlight
                 ingredients {
                   ingredient_id {
                     _id
@@ -37,7 +37,7 @@ export class MenuManagementService {
               }
             }
           }
-        `, variables:{limit, page},fetchPolicy: 'network-only',
+        `, variables: { limit, page }, fetchPolicy: 'network-only',
       })
       .pipe(
         map((result: any) => {
@@ -64,7 +64,7 @@ export class MenuManagementService {
     });
   }
 
-  update(value: any, id:any) {
+  update(value: any, id: any) {
     const recipe_name = value.recipe_name;
     const price = Number(value.price);
     const image = value.image;
@@ -88,6 +88,20 @@ export class MenuManagementService {
         }
       `,
       variables: { status, id },
+    });
+  }
+
+  updateHighlight(highlight: any, id: any) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation ($highlight: Boolean, $id: ID) {
+          updateHighlightRecipe(highlight: $highlight, id: $id){
+            _id
+            highlight
+            recipe_name
+          }
+        }
+      `,variables: { highlight, id },
     });
   }
 

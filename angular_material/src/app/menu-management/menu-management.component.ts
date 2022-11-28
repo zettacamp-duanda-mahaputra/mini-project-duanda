@@ -20,7 +20,9 @@ export class MenuManagementComponent implements OnInit {
     'image',
     'price',
     'status',
+    'highlight',
     'action',
+    
   ];
 
   statusFilter = new FormControl();
@@ -108,12 +110,19 @@ export class MenuManagementComponent implements OnInit {
   }
 
   onClick(event: any, element: any) {
-    console.log(event);
     const status = event.checked ? 'publish' : 'unpublish';
 
     this.menuManagementService.updateStatus(status, element._id).subscribe(() => {
       this.getAll()
     });
+  }
+
+  onShow(event:any, element:any){
+    const highlight = event.checked ? true : false ;
+
+    this.menuManagementService.updateHighlight(highlight,element._id).subscribe(()=>{
+      this.getAll()
+    })
   }
 
   onDelete(id: any) {

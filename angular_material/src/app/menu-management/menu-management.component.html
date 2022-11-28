@@ -55,6 +55,20 @@
       </td>
     </ng-container>
 
+    <ng-container matColumnDef="highlight">
+      <th mat-header-cell *matHeaderCellDef>Highlight</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-slide-toggle
+          color="primary"
+          [checked]="element.highlight == true"
+          matTooltip="{{element.highlight}}"
+          (change)="onShow($event, element)"
+          [disabled]="element.status == 'unpublish'"
+        >
+        </mat-slide-toggle>
+      </td>
+    </ng-container>
+
     <ng-container class="action" matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Action</th>
       <td mat-cell *matCellDef="let element">

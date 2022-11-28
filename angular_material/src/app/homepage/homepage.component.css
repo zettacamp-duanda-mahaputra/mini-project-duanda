@@ -51,6 +51,22 @@
   border: 1px solid black;
   height: 250px;
   border-radius: 1rem;
+  margin-top: 40px;
+}
+
+.image{
+  width: 350px;
+  height: 250px;
+  border-radius: 2rem;
+}
+
+.best{
+  margin-left: 40px;
+}
+
+.best1{
+  font-weight: bolder;
+  color: rgb(129, 56, 161);
 }
 
 
