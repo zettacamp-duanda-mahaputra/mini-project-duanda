@@ -29,7 +29,7 @@ export class HomepageComponent implements OnInit {
 
     getToken(messaging, { vapidKey: environment.firebase.vapidKey }).then((currentToken) => {
       if (currentToken) {
-        console.log(currentToken);
+        console.log('token anda' + currentToken);
         this.homeService.saveTokenFCM(currentToken).subscribe((data: any) => {
           console.log(data);
         })
