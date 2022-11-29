@@ -26,11 +26,9 @@
   </div>
 </div>
 
-
-<div class="wrapper2">
-  <div class="card2">
-    <img [src]="" alt="me">
+<h2>Special Offer</h2>
+<div class="wrapper2" >
+  <div class="card2" *ngFor="let special of specials">
+    <img [src]="special.image" alt="me">
   </div>
-  <div class="card2"></div>
-  <div class="card2"></div>
 </div>

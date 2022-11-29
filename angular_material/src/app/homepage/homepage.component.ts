@@ -11,6 +11,7 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 export class HomepageComponent implements OnInit {
   message: any = null;
   items: any
+  specials:any
 
   constructor(private homeService: HomepageService) { }
 
@@ -19,8 +20,15 @@ export class HomepageComponent implements OnInit {
       this.items = data?.data?.getAllRecipes.data
       console.log(this.items);
     })
+    this.getSpecial()
     this.requestPermission()
     this.listen()
+  }
+
+  getSpecial(){
+    this.homeService.getAll().subscribe((data:any)=>{
+      this.specials = data?.data?.getAllRecipes.data
+    })
   }
 
   requestPermission() {

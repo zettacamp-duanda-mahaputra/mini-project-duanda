@@ -69,6 +69,15 @@
       </td>
     </ng-container>
 
+    <ng-container matColumnDef="special">
+      <th mat-header-cell *matHeaderCellDef>Special Offer</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" (click)="openSpecial(element)">
+          <mat-icon>shopping_basket</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
     <ng-container class="action" matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Action</th>
       <td mat-cell *matCellDef="let element">

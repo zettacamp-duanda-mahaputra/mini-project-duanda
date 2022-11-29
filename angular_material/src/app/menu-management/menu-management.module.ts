@@ -4,7 +4,8 @@ import { MenuManagementComponent } from './menu-management.component';
 import { RouterModule, Routes } from '@angular/router';
 import { DialogComponent } from './dialog/dialog.component';
 import { MaterialModule } from '../material/material.module';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms'
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { DialogSpecialComponent } from './dialog-special/dialog-special.component'
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     MenuManagementComponent,
-    DialogComponent
+    DialogComponent,
+    DialogSpecialComponent
   ],
   imports: [
     CommonModule,

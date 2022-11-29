@@ -26,6 +26,23 @@ export class HomepageService {
     });
   }
 
+  getAll() {
+    return this.apollo.query({
+      query: gql`
+        query {
+          getAllRecipes(paginator:{limit:30, page:0}, match: {specialOver: true}) {
+            data {
+              _id
+              recipe_name
+              image
+            }
+          }
+        }
+        
+      `, fetchPolicy: 'network-only'
+    });
+  }
+
   saveTokenFCM(token: any) {
     console.log('save token');
     

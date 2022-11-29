@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { FormControl } from '@angular/forms';
 import { Dropdown } from './model/dropdown';
 import { Drop } from './model/drop';
+import { DialogSpecialComponent } from './dialog-special/dialog-special.component';
 
 @Component({
   selector: 'app-menu-management',
@@ -21,8 +22,8 @@ export class MenuManagementComponent implements OnInit {
     'price',
     'status',
     'highlight',
+    'special',
     'action',
-    
   ];
 
   statusFilter = new FormControl();
@@ -80,8 +81,6 @@ export class MenuManagementComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (!result) return;
 
-      console.log(result);
-
       if ('_id' in result) {
 
         this.menuManagementService
@@ -117,10 +116,10 @@ export class MenuManagementComponent implements OnInit {
     });
   }
 
-  onShow(event:any, element:any){
-    const highlight = event.checked ? true : false ;
+  onShow(event: any, element: any) {
+    const highlight = event.checked ? true : false;
 
-    this.menuManagementService.updateHighlight(highlight,element._id).subscribe(()=>{
+    this.menuManagementService.updateHighlight(highlight, element._id).subscribe(() => {
       this.getAll()
     })
   }
@@ -155,6 +154,29 @@ export class MenuManagementComponent implements OnInit {
 
     this.getAll()
 
+  }
+
+  openSpecial(data: any) {
+    const dialogRef = this.dialog.open(DialogSpecialComponent, {
+      data: data || null
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (!result) return;
+
+      this.menuManagementService.updateSpecial(result).subscribe((data) => {
+        console.log(data);
+        
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Data Completed',
+        }).then(() => {
+          this.getAll();
+        });
+      });
+
+    })
   }
 
 

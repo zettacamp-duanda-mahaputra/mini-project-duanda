@@ -11,7 +11,7 @@
     <button mat-button [routerLink]="['StockManagement']" routerLinkActive="active" *ngIf="role == 'Admin'">{{'app.stock-management' | translate}}</button>
     <button mat-button [routerLink]="['Login']" routerLinkActive="active" *ngIf="!isLogin">{{'app.login' | translate}}</button>
     <button mat-button [routerLink]="['Cart']">
-      <mat-icon>add_shopping_cart</mat-icon>
+      <mat-icon>shopping_cart</mat-icon>
     </button>
   </div>
   <button mat-button *ngFor="let menu of menus" [routerLink]="[menu?.routing]">{{ menu?.page }}</button>

@@ -1,0 +1,6 @@
+<mat-form-field appearance="fill">
+  <mat-label>Discount</mat-label>
+  <input type="number" [formControl]="discount" matInput />
+</mat-form-field>
+<button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+<button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>

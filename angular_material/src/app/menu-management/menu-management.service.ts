@@ -9,7 +9,7 @@ export class MenuManagementService {
   constructor(private apollo: Apollo) { }
 
   get(limit: any, page: any) {
-    
+
     return this.apollo
       .query({
         query: gql`
@@ -101,8 +101,27 @@ export class MenuManagementService {
             recipe_name
           }
         }
-      `,variables: { highlight, id },
+      `, variables: { highlight, id },
     });
+  }
+
+  updateSpecial(data:any) {
+    const id = data._id
+    const specialOver = true
+    const disc = data.discount
+
+    return this.apollo.mutate({
+      mutation: gql`
+      mutation UpdateSpecialOver($id: ID, $specialOver: Boolean, $disc: Int) {
+        updateSpecialOver(id: $id, specialOver: $specialOver,disc: $disc) {
+          _id
+          image
+          disc
+          recipe_name
+          price
+        }
+      }`, variables:{id, specialOver, disc}
+    })
   }
 
   delete(id: any) {
