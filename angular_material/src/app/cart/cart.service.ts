@@ -110,6 +110,10 @@ export class CartService {
         getUserTransactionHistory{
           data {
             menu {
+              price{
+                pcs
+                total
+              }
               amount
               note
               recipe_id {

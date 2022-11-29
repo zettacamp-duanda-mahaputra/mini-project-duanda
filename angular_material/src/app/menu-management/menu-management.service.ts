@@ -8,13 +8,18 @@ import { map } from 'rxjs';
 export class MenuManagementService {
   constructor(private apollo: Apollo) { }
 
-  get(limit: any, page: any) {
+  get(paginator:any, match:any) {
+     
+    if(match.status == 'all'){
+      match.status = null
+    }
+    
 
     return this.apollo
       .query({
         query: gql`
-          query getAllRecipes($limit:Int, $page:Int){
-            getAllRecipes(paginator: { limit: $limit, page: $page }) {
+          query getAllRecipes($paginator:paginator, $match: match){
+            getAllRecipes(paginator: $paginator, match:$match) {
               data {
                 _id
                 available
@@ -37,7 +42,7 @@ export class MenuManagementService {
               }
             }
           }
-        `, variables: { limit, page }, fetchPolicy: 'network-only',
+        `, variables: { paginator, match }, fetchPolicy: 'network-only',
       })
       .pipe(
         map((result: any) => {

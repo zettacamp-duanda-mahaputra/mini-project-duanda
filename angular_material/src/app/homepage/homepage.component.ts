@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HomepageService } from './homepage.service';
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-homepage',
@@ -12,10 +14,14 @@ export class HomepageComponent implements OnInit {
   message: any = null;
   items: any
   specials:any
+  user: any
 
-  constructor(private homeService: HomepageService) { }
+  constructor(private homeService: HomepageService, private router:Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    const user = this.authService.getUser()
+    this.user = user
+
     this.homeService.get().subscribe((data: any) => {
       this.items = data?.data?.getAllRecipes.data
       console.log(this.items);
@@ -28,6 +34,8 @@ export class HomepageComponent implements OnInit {
   getSpecial(){
     this.homeService.getAll().subscribe((data:any)=>{
       this.specials = data?.data?.getAllRecipes.data
+      console.log(this.specials);
+      
     })
   }
 
@@ -60,5 +68,16 @@ export class HomepageComponent implements OnInit {
     });
   }
 
+  onCart(){
+    if(this.user){
+      this.router.navigate(['Cart'])
+    }else{
+      this.router.navigate(['Login'])
+    }
+  }
+
+  onMenu(){
+    this.router.navigate(['Menu'])
+  }
 
 }

@@ -48,7 +48,7 @@
 }
 
 .card2{
-  width: calc((100%/3) - 100px);
+  width: calc((100%/3) - 150px);
   height: 250px;
   border-radius: 1rem;
   margin-top: 40px;
@@ -74,6 +74,12 @@
   font-weight: bolder;
   color: rgb(129, 56, 161);
 }
+
+h2{
+  margin: 0;
+}
+
+
 
 
 

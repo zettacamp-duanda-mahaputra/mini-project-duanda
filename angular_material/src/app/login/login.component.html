@@ -1,21 +1,28 @@
 
   <div class="wrapper" >
+
     <div class="card img"></div>
+    
     <form class="form card" [formGroup]="myForm">
       <mat-form-field class="head" appearance="legacy">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" />
       </mat-form-field>
-      <mat-form-field appearance="legacy">
+
+      <mat-form-field>
         <mat-label>Password</mat-label>
-        <input type="password" id="password" matInput formControlName="password" />
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
       </mat-form-field>
-      <mat-checkbox class="show" (change)="onShow($event)">Show Password</mat-checkbox>
+
       <div class="btn">
         <button mat-raised-button color="primary" (click)="onSubmit()">
           Login
         </button>
       </div>
+
     </form>
   </div>
   

@@ -7,15 +7,13 @@ import { map } from 'rxjs';
 })
 export class MenuService {
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) { }
 
-  get() {
+  get(paginator?: any, match?: any) {
     return this.apollo.query({
       query: gql`
-        query {
-          getAllRecipes(
-            paginator: { limit: 30, page: 0 }
-            match: { status: publish }
+        query getAllRecipes($paginator: paginator, $match: match) {
+          getAllRecipes(paginator: $paginator, match: $match
           ) {
             data {
               _id
@@ -33,11 +31,16 @@ export class MenuService {
                 }
               }
             }
+            paginator{
+                total_items
           }
         }
-      `,fetchPolicy:'network-only'
-    });
+       }
+      `, fetchPolicy: 'network-only', variables: { paginator, match }
+    }).pipe(map((result: any) => {
+      return result.data.getAllRecipes;
+    }))
   }
 
- 
+
 }

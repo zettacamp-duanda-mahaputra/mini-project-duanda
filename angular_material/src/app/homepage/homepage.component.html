@@ -14,8 +14,8 @@
         </span>
       </h2>
     <div class="btn">
-      <button mat-raised-button color="primary" [routerLink]="['Menu']">{{'home.btn-menu' | translate}}</button>
-      <button mat-raised-button color="primary" [routerLink]="['Login']">{{'home.btn-order' | translate}}</button>
+      <button mat-raised-button color="primary" (click)="onMenu()"  >{{'home.btn-menu' | translate}}</button>
+      <button mat-raised-button color="primary" (click)="onCart()">{{'home.btn-order' | translate}}</button>
     </div>
   </div>
   <div class="card img">
@@ -30,5 +30,8 @@
 <div class="wrapper2" >
   <div class="card2" *ngFor="let special of specials">
     <img [src]="special.image" alt="me">
+    <p>
+      tes
+      {{(special.price*special.disc) /100}}</p>
   </div>
 </div>

@@ -26,9 +26,12 @@ export class MenuManagementComponent implements OnInit {
     'action',
   ];
 
-  statusFilter = new FormControl();
-  filteredValues: any = { status: '' };
   availableSources: Dropdown[] = Drop;
+  filterStatus:any = null
+
+  defaultFilter = ""
+  filterName = new FormControl(null)
+  inputName = ""
 
   pageSize: number = 6
   pageIndex: number = 0
@@ -43,31 +46,36 @@ export class MenuManagementComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
 
-    this.statusFilter.valueChanges.subscribe((statusFilterValue) => {
-      this.filteredValues['status'] = statusFilterValue;
-      this.dataSource.filter = JSON.stringify(this.filteredValues);
-    });
-    this.dataSource.filterPredicate = this.customFilterPredicate();
-  }
-
-  customFilterPredicate() {
-    const myFilterPredicate = function (data: any, filter: string): any {
-      console.log(data, filter);
-
-      let searchString = JSON.parse(filter);
-      let statusFound = data.status == searchString.status;
-
-      return statusFound;
-    };
-    return myFilterPredicate;
+    this.filterName.valueChanges.subscribe((data:any)=>{
+      this.inputName = data      
+      this.getAll();
+    })
+    
   }
 
   getAll() {
-    this.menuManagementService.get(this.pageSize, this.pageIndex).subscribe((data: any) => {
+    const pagination = {
+      limit: this.pageSize ? this.pageSize : 5,
+      page: this.pageIndex ? this.pageIndex : 0
+    }
+
+    let match = {
+      status: this.filterStatus,
+      name: this.inputName
+    }
+
+
+    this.menuManagementService.get(pagination, match).subscribe((data: any) => {
       this.dataSource.data = data.data;
 
       this.itemLength = data.paginator.total_items
 
+    }, err=>{
+      Swal.fire({
+        icon: 'error',
+        title: 'error',
+        text: err.message
+      })
     });
   }
 
@@ -148,7 +156,6 @@ export class MenuManagementComponent implements OnInit {
   }
 
   indexingPage(data: any) {
-    console.log(data);
     this.pageIndex = data.pageIndex
     this.pageSize = data.pageSize
 
@@ -177,6 +184,11 @@ export class MenuManagementComponent implements OnInit {
       });
 
     })
+  }
+
+  onFilterStatus(event:any){
+    this.filterStatus = event
+    this.getAll()
   }
 
 

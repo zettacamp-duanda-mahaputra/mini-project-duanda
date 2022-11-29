@@ -1,4 +1,17 @@
+<mat-form-field>
+  <mat-label>Filter Name</mat-label>
+  <input matInput [formControl]="filterName" [(ngModel)]="defaultFilter"/>
+</mat-form-field>
+
 <div>
   <app-card *ngFor="let item of menus" [items]="item"></app-card>
 </div>
+
+<mat-paginator
+[length]="itemLength"
+[pageSize]="pageSize"
+aria-label="Select page"
+(page)="pageEvent = indexingPage($event)"
+>
+</mat-paginator>
 

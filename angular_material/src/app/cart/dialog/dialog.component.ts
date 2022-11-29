@@ -10,7 +10,7 @@ import { ListComponent } from '../list/list.component';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
-  displayedColumns: string[] = ['order_date', 'recipe_name', 'total_price', 'order_status']
+  displayedColumns: string[] = ['order_date', 'recipe_name', 'price', 'total_price', 'order_status']
   dataSource = new MatTableDataSource
 
   constructor(private cartServivce:CartService, private dialogref: MatDialogRef<ListComponent>) { }
@@ -18,7 +18,7 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
     this.cartServivce.history().subscribe((data:any)=>{
       console.log(data);
-      
+    
       this.dataSource = data;
       
       

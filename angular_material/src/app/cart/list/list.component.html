@@ -1,5 +1,7 @@
 <h1 *ngIf="!carts?.menu?.length"> No Transaction</h1>
-<img class="img" *ngIf="!carts?.menu?.length" src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-png-image-download-pngm-2.png" alt="me">
+<div class="img">
+  <img *ngIf="!carts?.menu?.length" src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-png-image-download-pngm-2.png" alt="me">
+</div>
 <app-card *ngFor="let item of carts?.menu" [items]="item"></app-card>
 <div class="total">
   <h3>Total: {{carts?.total_price | currency:'Rp '}}</h3>

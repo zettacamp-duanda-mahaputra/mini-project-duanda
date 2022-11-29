@@ -9,6 +9,12 @@ export class StockManagementService {
   constructor(private apollo: Apollo) {}
 
   getAllIngredients(paginator?:any,match?: any) {
+    
+    
+    if(match.status == 'all'){
+      match.status = null
+    }
+
     return this.apollo.query({
       query: gql`
         query GetAllIngredients($paginator:paginator, $match: ingredientsInput){

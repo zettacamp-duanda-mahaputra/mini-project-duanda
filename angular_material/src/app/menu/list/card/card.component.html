@@ -12,29 +12,13 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <div [formGroup]="myForm">
-      <mat-form-field class="qty">
-        <mat-label>Amount</mat-label>
-        <input type="number" min="1" matInput formControlName="amount" />
-        <mat-error *ngIf="myForm.get('amount')?.errors?.['max']"
-          >must be smaller than available</mat-error
-        >
-        <mat-error *ngIf="myForm.get('amount')?.errors?.['min']"
-          >must be greater than 0</mat-error
-        >
-      </mat-form-field>
-    </div>
-    <br />
-    <button class="add" mat-raised-button color="accent" [disabled]="items.available === 0" (click)="onSubmit()">
-      <mat-icon>add</mat-icon> Add To Cart
-    </button>
     <button
       [disabled]="items.available === 0"
       mat-raised-button
       color="primary"
       (click)="openDialog(items)"
     >
-      Details
+    <mat-icon>add</mat-icon> Add To Cart
     </button>
   </mat-card-actions>
 </mat-card>

@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(private loginService: LoginService, private router: Router, private authService: AuthService) { }
-
+  hide = true;
   ngOnInit(): void { }
 
   onSubmit() {
@@ -47,14 +47,5 @@ export class LoginComponent implements OnInit {
   errorHandler(error: any) {
     Swal.fire('Failed', 'Not Completed', 'error');
 
-  }
-
-  onShow(value:any){
-    let password = document.getElementById('password') as HTMLInputElement
-    if(value.checked == true){
-      password.type = 'text'
-    }else{
-      password.type = 'password'
-    }
   }
 }

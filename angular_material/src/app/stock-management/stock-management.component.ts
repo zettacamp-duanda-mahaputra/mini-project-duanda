@@ -17,9 +17,12 @@ export class StockManagementComponent implements OnInit {
   dataSource = new MatTableDataSource();
   displayedColumns: any[] = ['name', 'stock', 'status', 'action'];
 
-  statusFilter = new FormControl();
-  filteredValues: any = { status: '' };
   availableSources: Dropdown[] = Drop;
+  filterStatus:any = null 
+
+  defaultFilter = ""
+  filterName = new FormControl(null)
+  inputName = ""
 
   pageSize: number = 10
   pageIndex: number = 0
@@ -34,33 +37,27 @@ export class StockManagementComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
 
-    this.statusFilter.valueChanges.subscribe((statusFilterValue) => {
-      this.filteredValues['status'] = statusFilterValue;
-      this.dataSource.filter = JSON.stringify(this.filteredValues);
-    });
-    this.dataSource.filterPredicate = this.customFilterPredicate();
+    this.filterName.valueChanges.subscribe((data:any)=>{
+      this.inputName = data      
+      this.getAll();
+    })
+
   }
 
-  customFilterPredicate() {
-    const myFilterPredicate = function (data: any, filter: string): any {
-      console.log(data, filter);
-
-      let searchString = JSON.parse(filter);
-      let statusFound = data.status.includes(
-        (searchString.status || '')
-      );
-
-      return statusFound;
-    };
-    return myFilterPredicate;
-  }
 
   getAll() {
     const pagination = {
       limit: this.pageSize ? this.pageSize : 5,
       page: this.pageIndex ? this.pageIndex : 0
     }
-    this.stockManagementService.getAllIngredients(pagination).subscribe((data: any) => {
+
+    const match = {
+      status: this.filterStatus,
+      name: this.inputName
+    }
+
+
+    this.stockManagementService.getAllIngredients(pagination, match).subscribe((data: any) => {
       this.dataSource.data = data.data;
 
       this.itemLength = data.paginator.total_items
@@ -134,5 +131,11 @@ export class StockManagementComponent implements OnInit {
 
     this.getAll()
 
+  }
+
+  onFilterStatus(event:any){
+    this.filterStatus = event
+    this.getAll()
+    
   }
 }

@@ -35,6 +35,8 @@ export class HomepageService {
               _id
               recipe_name
               image
+              price
+              disc
             }
           }
         }

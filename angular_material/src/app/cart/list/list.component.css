@@ -33,7 +33,13 @@ h1 {
 }
 
 .img{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.img img{
   width: 400px;
   height: 300px;
-  margin: auto;
 }

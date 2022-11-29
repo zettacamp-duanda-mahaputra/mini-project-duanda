@@ -57,6 +57,7 @@ export class DialogComponent implements OnInit {
     }
 
     onSubmit() {
+
         if (this.myForm.valid) {
             console.log(this.myForm.value);
 
@@ -71,25 +72,30 @@ export class DialogComponent implements OnInit {
 
                 console.log(value);
 
-                this.cartService.add(value).subscribe({
-                    next: (data:any) => {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success',
-                            text: 'Menu added',
-                        });
-                    },
-                    error: (error:any) => {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: error.message,
-                        });
-                    },
-                });
+                this.cartService.add(value).subscribe(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Menu added',
+                    });
+                }, err=>{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'error',
+                        text: err.message
+                    });
+                })
+
             }
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'error',
+                text: 'amount not available'
+            });
         }
     }
+
 
     onCancel() {
         this.dialogRef.close();
