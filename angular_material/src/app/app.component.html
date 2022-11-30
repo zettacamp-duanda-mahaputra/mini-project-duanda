@@ -45,8 +45,18 @@
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <p>{{role}}</p>
-    <button mat-menu-item *ngIf="isLogin" (click)="isLogout()">{{"app.logout" | translate}}</button>
+    <p>{{ role }}</p>
+    <button mat-menu-item *ngIf="isLogin" (click)="isLogout()">
+      {{ "app.logout" | translate }}
+    </button>
+    <button
+      mat-menu-item
+      [routerLink]="['/Register/RegisterUser']"
+      routerLinkActive="active"
+      *ngIf="!isLogin"
+    >
+      {{ "app.register" | translate }}
+    </button>
     <button
       mat-menu-item
       [routerLink]="['Login']"

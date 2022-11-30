@@ -7,7 +7,8 @@
         "stock-management": "Manajemen Stok",
         "cart": "Keranjang",
         "login": "Masuk",
-        "logout": "Keluar"
+        "logout": "Keluar",
+        "register": "Daftar"
     },
     "home": {
         "btn-menu": "Lihat Menu",

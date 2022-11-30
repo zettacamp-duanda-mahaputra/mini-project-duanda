@@ -64,7 +64,7 @@ export class ListComponent implements OnInit {
   openDialog(data:any){
     const dialogRef = this.dialog.open(DialogComponent,{
       data: data,
-      width:'500px'
+      width:'100%'
     })
   }
 }

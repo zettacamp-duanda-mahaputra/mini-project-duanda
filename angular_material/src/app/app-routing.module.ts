@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/Homepage', pathMatch: 'full' },
   { path: 'Homepage', loadChildren: () => import('./homepage/homepage.module').then(m => m.HomepageModule) },
   { path: 'About', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) },
+  { path: 'Register', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule) },
   { path: 'Cart', canActivate:[CartGuard], loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
   { path: 'Login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
   { path: 'Menu', loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule) },

@@ -29,6 +29,7 @@ export class MenuManagementService {
                 description
                 status
                 highlight
+                specialOver
                 ingredients {
                   ingredient_id {
                     _id

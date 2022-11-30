@@ -85,6 +85,9 @@
           mat-raised-button
           color="primary"
           (click)="openSpecial(element)"
+          [ngClass]="element.specialOver == true ? 'active':''"
+          [matTooltip]="element.specialOver ==  true ? 'active':'inactive'"
+          [disabled]="element.status == 'unpublish'"
         >
           <mat-icon>shopping_basket</mat-icon>
         </button>
