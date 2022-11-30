@@ -30,7 +30,7 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
 
     
-    this.stockManagementService.getAllIngredients().subscribe((result) => {
+    this.stockManagementService.getAllIngre().subscribe((result) => {
       this.stockIngredient = result.data;
     });
 

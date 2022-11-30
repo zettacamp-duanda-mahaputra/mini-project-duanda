@@ -8,6 +8,26 @@ import { map } from 'rxjs'
 export class StockManagementService {
   constructor(private apollo: Apollo) {}
 
+  getAllIngre() {
+  
+    return this.apollo.query({
+      query: gql`
+        query {
+          GetAllIngredients{
+            data {
+              _id
+              name
+              stock
+              status
+            }
+          }
+        }
+      `,fetchPolicy:'network-only'
+    }).pipe(map((result:any)=>{
+      return result.data.GetAllIngredients
+    }))
+  }
+
   getAllIngredients(paginator?:any,match?: any) {
     
     

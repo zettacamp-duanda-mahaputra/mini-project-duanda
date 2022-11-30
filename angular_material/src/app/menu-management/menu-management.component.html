@@ -9,6 +9,7 @@
       <mat-icon>add</mat-icon>
       Add
     </button>
+    
     <mat-form-field>
       <mat-select
         placeholder="Filter Status"
@@ -69,7 +70,7 @@
         <mat-slide-toggle
           color="primary"
           [checked]="element.highlight == true"
-          matTooltip="{{ element.highlight }}"
+          [matTooltip]="element.highlight ==  true ? 'active':'inactive'"
           (change)="onShow($event, element)"
           [disabled]="element.status == 'unpublish'"
         >
