@@ -111,6 +111,12 @@ export class MenuManagementComponent implements OnInit {
           }).then(() => {
             this.getAll();
           });
+        }, err=>{
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed',
+            text: err.message
+          })
         });
       }
     });
@@ -164,6 +170,8 @@ export class MenuManagementComponent implements OnInit {
   }
 
   openSpecial(data: any) {
+    console.log(data);
+    
     const dialogRef = this.dialog.open(DialogSpecialComponent, {
       data: data || null
     });

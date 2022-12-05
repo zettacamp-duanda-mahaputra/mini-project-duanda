@@ -24,6 +24,7 @@ export class MenuManagementService {
                 _id
                 available
                 price
+                disc
                 recipe_name
                 image
                 description

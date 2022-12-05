@@ -11,10 +11,14 @@ import { MenuManagementComponent } from '../menu-management.component';
 export class DialogSpecialComponent implements OnInit {
   discount = new FormControl(null)
 
-  constructor(public dialogRef: MatDialogRef<MenuManagementComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(public dialogRef: MatDialogRef<DialogSpecialComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: any) { }
 
   ngOnInit(): void {
+    console.log(this.data);
+    if(this.data){
+      this.discount.patchValue(this.data.disc)
+    }
   }
 
   onSubmit(){
