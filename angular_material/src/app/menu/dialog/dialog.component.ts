@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { CartModule } from 'src/app/cart/cart.module';
 import { CartService } from 'src/app/cart/cart.service';
@@ -19,6 +20,7 @@ export class DialogComponent implements OnInit {
     bismillahIngredients: any;
     myForm: any = FormGroup;
     avail: any;
+    isLogin: any
 
     form() {
         this.myForm = new FormGroup({
@@ -35,6 +37,8 @@ export class DialogComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) private data: any,
         public dialogRef: MatDialogRef<MenuComponent>,
         private cartService: CartService,
+        private authService: AuthService,
+        private router:Router
     ) { }
 
     ngOnInit(): void {
@@ -54,42 +58,75 @@ export class DialogComponent implements OnInit {
         this.avail = a.available;
 
         this.form();
+
+        this.isLogin = this.authService.getToken()
+
     }
 
     onSubmit() {
-
-        if (this.myForm.valid) {
-            let a: any = this.myForm.get('amount')?.value;
-            let b: any = this.carts.available;
-
-            if (a <= b) {
-                const value: any = {
-                    addToCartId: this.data._id,
-                    ...this.myForm.value,
-                };
-
-                this.cartService.add(value).subscribe(() => {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Success',
-                        text: 'Menu added',
-                    });
-                }, err=>{
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'error',
-                        text: err.message
-                    });
-                })
-
-            }
-        }else{
+        if (!this.isLogin) {
+            
             Swal.fire({
-                icon: 'error',
-                title: 'error',
-                text: 'amount not available'
-            });
+                title: 'Do you have an account?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Yes, Login',
+                denyButtonText: `No, Register`,
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire({
+                    icon:'info',
+                    text:'Please Login to complete your transaction'
+                  })
+                  this.router.navigate(['Login']).then(()=>{
+                    localStorage.setItem('addCart', JSON.stringify(this.myForm.value))
+                  })
+                } 
+                else if (result.isDenied) {
+                  Swal.fire({
+                    icon:'info',
+                    text:'Please register to complete your transaction'
+                  })
+                  this.router.navigate(['/Register/RegisterUser'])
+                }
+              })
+        } 
+        else {
+            if (this.myForm.valid) {
+                let a: any = this.myForm.get('amount')?.value;
+                let b: any = this.carts.available;
+
+                if (a <= b) {
+                    const value: any = {
+                        addToCartId: this.data._id,
+                        ...this.myForm.value,
+                    };
+
+                    this.cartService.add(value).subscribe(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Menu added',
+                        });
+                    }, err => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'error',
+                            text: err.message
+                        });
+                    })
+
+                }
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'error',
+                    text: 'amount not available'
+                });
+            }
         }
+
+
     }
 
 

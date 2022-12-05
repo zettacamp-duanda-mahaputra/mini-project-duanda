@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import Swal from 'sweetalert2';
 import { AuthService } from '../auth.service';
 import { LoginService } from './login.service';
+import { CartService } from './../cart/cart.service'
 
 @Component({
   selector: 'app-login',
@@ -17,12 +18,12 @@ export class LoginComponent implements OnInit {
     password: new FormControl(null, Validators.required),
   });
 
-  constructor(private loginService: LoginService, private router: Router, private authService: AuthService) { }
+  constructor(private loginService: LoginService, private router: Router, private authService: AuthService, private cartService:CartService) { }
   hide = true;
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  get(){
-    this.loginService.getCredit().subscribe(()=>{})
+  get(): any {
+    this.loginService.getCredit().subscribe(() => { })
   }
 
   onSubmit() {
@@ -37,16 +38,32 @@ export class LoginComponent implements OnInit {
 
   successHandler(data: any) {
     this.authService.setUser(data.data.loginUser)
+    
+    let addCart:any = localStorage.getItem('addCart')
+    addCart = JSON.parse(addCart)
+    if(addCart){
+      this.cartService.add(addCart).subscribe(()=>{
+        this.router.navigate(['Cart']).then(() => {
+          window.location.reload();
+          this.get()
+        });
+      })
+    }
+    else{
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Login Success'
+      })
+      this.router.navigate(['Homepage']).then(() => {
+        window.location.reload();
+        this.get()
+      });
+    }
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Success',
-      text: 'Login Success'
-    })
-    this.router.navigate(['Homepage']).then(() => {
-      window.location.reload();
-      this.get()
-    });
+    
+
+   
   }
 
   errorHandler(error: any) {

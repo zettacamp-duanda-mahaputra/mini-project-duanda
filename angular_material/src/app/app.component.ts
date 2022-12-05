@@ -15,46 +15,47 @@ export class AppComponent implements OnInit {
   menus: any = [];
   isLogin: any
   role: any;
-  selectedLang:any
-  public balances:any
-  
+  selectedLang: any
+  public balances: any
 
-  constructor(private router: Router, private authService:AuthService, private translate:TranslateService, private loginService:LoginService) {}
+
+  constructor(private router: Router, private authService: AuthService, private translate: TranslateService, private loginService: LoginService) { }
 
   ngOnInit() {
     this.role = this.authService.getRole()
     this.isLogin = this.authService.getToken()
 
     this.getBalance()
+
   }
 
-  getBalance(){
-    this.loginService.getCredit().subscribe((data:any)=>{
-      this.balances = data?.data?.getBalanceCredit      
+  getBalance() {
+    this.loginService.getCredit().subscribe((data: any) => {
+      this.balances = data?.data?.getBalanceCredit
     })
   }
 
   isLogout() {
-   this.authService.clearUser()
-   Swal.fire({
-    title: 'Are you sure?',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, logout it!'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire(
-        'Logout!',
-        'You has been logout.',
-        'success'
-      )
-      this.router.navigate(['Homepage']).then(() => {
-        window.location.reload();
-      });
-    }
-  }) 
+    this.authService.clearUser()
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, logout it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Logout!',
+          'You has been logout.',
+          'success'
+        )
+        this.router.navigate(['Homepage']).then(() => {
+          window.location.reload();
+        });
+      }
+    })
   }
 
   onCart() {
@@ -65,10 +66,10 @@ export class AppComponent implements OnInit {
     });
   }
 
-  setLang(event:any){
-    if(event.checked == true){
+  setLang(event: any) {
+    if (event.checked == true) {
       this.selectedLang = 'id'
-    }else{
+    } else {
       this.selectedLang = 'en'
     }
     this.translate.use(this.selectedLang)
