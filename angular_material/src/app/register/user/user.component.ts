@@ -31,13 +31,11 @@ export class UserComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: 'Success',
-          text: 'Login Success'
+          text: 'Register Success'
         })
-        this.router.navigate(['Login']).then(() => {
-          window.location.reload();
-        });
+        this.router.navigate(['Login'])
       }, err=>{
-        Swal.fire('Failed', 'Not Completed', 'error');
+        Swal.fire('Failed', err.message, 'error');
       })
     }else{
       Swal.fire('Failed', 'Not Completed', 'error');

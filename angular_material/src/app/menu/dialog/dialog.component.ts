@@ -65,7 +65,11 @@ export class DialogComponent implements OnInit {
 
     onSubmit() {
         if (!this.isLogin) {
-            
+            const val: any = {
+                addToCartId: this.data._id,
+                ...this.myForm.value,
+            };
+
             Swal.fire({
                 title: 'Do you have an account?',
                 showDenyButton: true,
@@ -79,7 +83,7 @@ export class DialogComponent implements OnInit {
                     text:'Please Login to complete your transaction'
                   })
                   this.router.navigate(['Login']).then(()=>{
-                    localStorage.setItem('addCart', JSON.stringify(this.myForm.value))
+                    localStorage.setItem('addCart', JSON.stringify(val))
                   })
                 } 
                 else if (result.isDenied) {
@@ -87,7 +91,10 @@ export class DialogComponent implements OnInit {
                     icon:'info',
                     text:'Please register to complete your transaction'
                   })
-                  this.router.navigate(['/Register/RegisterUser'])
+                  this.router.navigate(['/Register/RegisterUser']).then(()=>{
+                    localStorage.setItem('addCart', JSON.stringify(val))
+                  })
+
                 }
               })
         } 

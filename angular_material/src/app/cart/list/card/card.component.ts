@@ -66,6 +66,11 @@ export class CardComponent implements OnInit {
       this.listComponent.getAll()
     })
 
+    if(localStorage.getItem('addCart')){
+      localStorage.removeItem('addCart')
+    }
+    
+
   }
 
   OnEdit(id: any, amount: any, note: any) {
