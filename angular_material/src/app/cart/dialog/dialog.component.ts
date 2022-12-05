@@ -17,9 +17,7 @@ export class DialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartServivce.history().subscribe((data:any)=>{
-      this.dataSource = data;
-      console.log(this.dataSource);
-      
+      this.dataSource = data;      
     })
   }
 

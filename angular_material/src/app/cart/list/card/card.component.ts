@@ -28,9 +28,7 @@ export class CardComponent implements OnInit {
       available: this.items?.recipe_id?.available,
     };
     this.avail = a.available;
-    console.log(this.avail);
     this.form()
-    console.log(this.items);
     this.myForm.patchValue(this.items)
 
     this.amountChange()
@@ -47,7 +45,6 @@ export class CardComponent implements OnInit {
   amountChange() {
     if (this.myForm.valid) {
       this.myForm.get('amount')?.valueChanges.pipe(debounceTime(500)).subscribe((value: any) => {
-        console.log(value);
         if (value) {
           this.OnEdit(this.items._id, value, this.items.note)
         }
@@ -58,7 +55,6 @@ export class CardComponent implements OnInit {
 
   noteChange() {
     this.myForm.get('note')?.valueChanges.pipe(debounceTime(500)).subscribe((data: any) => {
-      console.log(data);
       if (data) {
         this.OnEdit(this.items._id, this.items.amount, data)
       }
@@ -66,8 +62,6 @@ export class CardComponent implements OnInit {
   }
 
   onRemove(item: any) {
-    console.log(item);
-
     this.cartService.remove(item).subscribe(() => {
       this.listComponent.getAll()
     })

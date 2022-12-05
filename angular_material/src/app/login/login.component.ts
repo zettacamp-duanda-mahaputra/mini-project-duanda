@@ -19,7 +19,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router, private authService: AuthService) { }
   hide = true;
-  ngOnInit(): void { }
+  ngOnInit(): void {}
+
+  get(){
+    this.loginService.getCredit().subscribe(()=>{})
+  }
 
   onSubmit() {
     const value = this.myForm.value;
@@ -41,6 +45,7 @@ export class LoginComponent implements OnInit {
     })
     this.router.navigate(['Homepage']).then(() => {
       window.location.reload();
+      this.get()
     });
   }
 

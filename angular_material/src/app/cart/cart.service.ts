@@ -36,7 +36,6 @@ export class CartService {
   }
 
   add(data: any) {
-    console.log(data.note);
     if(data.note == null){
       data.note = ""
     }
@@ -59,8 +58,6 @@ export class CartService {
   }
 
   remove(id: any) {
-    console.log(id);
-
     return this.apollo.mutate({
       mutation: gql`
         mutation ReduceCart($id: ID) {

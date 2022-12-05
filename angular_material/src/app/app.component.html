@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <p class="name">Waroeng Mba Atik</p>
+  <p class="name">Waroeng Mbak Atik</p>
 
   <div class="wrap-left"></div>
 
@@ -46,6 +46,7 @@
   </button>
   <mat-menu #menu="matMenu">
     <p>{{ role }}</p>
+    <p *ngIf="isLogin">{{balances?.credit | currency:'Rp '}}</p>
     <button mat-menu-item *ngIf="isLogin" (click)="isLogout()">
       {{ "app.logout" | translate }}
     </button>

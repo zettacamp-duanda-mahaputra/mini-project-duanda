@@ -59,8 +59,6 @@ export class DialogComponent implements OnInit {
     onSubmit() {
 
         if (this.myForm.valid) {
-            console.log(this.myForm.value);
-
             let a: any = this.myForm.get('amount')?.value;
             let b: any = this.carts.available;
 
@@ -69,8 +67,6 @@ export class DialogComponent implements OnInit {
                     addToCartId: this.data._id,
                     ...this.myForm.value,
                 };
-
-                console.log(value);
 
                 this.cartService.add(value).subscribe(() => {
                     Swal.fire({

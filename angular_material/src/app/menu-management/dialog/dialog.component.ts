@@ -63,7 +63,6 @@ export class DialogComponent implements OnInit {
           });
         }
       }
-      console.log(data);
 
       this.myForm.patchValue(data);
     } else {

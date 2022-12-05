@@ -4,6 +4,8 @@ import { HomepageService } from './homepage.service';
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import Aos from 'aos';
+
 
 @Component({
   selector: 'app-homepage',
@@ -24,7 +26,7 @@ export class HomepageComponent implements OnInit {
 
     this.homeService.get().subscribe((data: any) => {
       this.items = data?.data?.getAllRecipes.data
-      console.log(this.items);
+      Aos.init()
     })
     this.getSpecial()
     this.requestPermission()
@@ -33,29 +35,23 @@ export class HomepageComponent implements OnInit {
 
   getSpecial(){
     this.homeService.getAll().subscribe((data:any)=>{
-      this.specials = data?.data?.getAllRecipes.data
-      console.log(this.specials);
-      
+      this.specials = data?.data?.getAllRecipes.data      
     })
   }
 
-  requestPermission() {
-    console.log('request permission function');
-    
+  requestPermission() {    
     const messaging = getMessaging();
 
     getToken(messaging, { vapidKey: environment.firebase.vapidKey }).then((currentToken) => {
       if (currentToken) {
-        console.log('token anda' + currentToken);
         this.homeService.saveTokenFCM(currentToken).subscribe((data: any) => {
-          console.log(data);
         })
       } else {
         console.log('No registration token available. Request permission to generate one.');
       }
     }).catch((err) => {
       console.log('An error occurred while retrieving token. ', err);
-      // ...
+      
     });
 
   }
@@ -63,7 +59,6 @@ export class HomepageComponent implements OnInit {
   listen() {
     const messaging = getMessaging();
     onMessage(messaging, (payload) => {
-      console.log('Message received. ', payload);
       this.message = payload;
     });
   }

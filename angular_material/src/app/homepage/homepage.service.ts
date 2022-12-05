@@ -45,9 +45,7 @@ export class HomepageService {
     });
   }
 
-  saveTokenFCM(token: any) {
-    console.log('save token');
-    
+  saveTokenFCM(token: any) {    
     return this.apollo.query({
       query: gql`
       mutation SaveTokenFCM($token: String) {

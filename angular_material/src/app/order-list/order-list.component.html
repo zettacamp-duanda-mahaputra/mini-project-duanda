@@ -1,0 +1,63 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.user_id.detail_user.first_name }}
+      {{ element.user_id.detail_user.last_name }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="order_date">
+    <th mat-header-cell *matHeaderCellDef>Order Date</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.order_date | date : "fullDate" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="menu">
+    <th mat-header-cell *matHeaderCellDef>Menu</th>
+    <td mat-cell *matCellDef="let element">
+      <p *ngFor="let item of element.menu">{{ item.recipe_id.recipe_name }}</p>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="amount">
+    <th mat-header-cell *matHeaderCellDef>Amount</th>
+    <td mat-cell *matCellDef="let element">
+      <p *ngFor="let item of element.menu">{{ item.amount }}</p>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="pcs">
+    <th mat-header-cell *matHeaderCellDef>Pcs</th>
+    <td mat-cell *matCellDef="let element">
+      <p *ngFor="let item of element.menu">{{ item.price.pcs }}</p>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Price</th>
+    <td mat-cell *matCellDef="let element">
+        <p *ngFor="let item of element.menu">{{ item.price.total }}</p>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="note">
+    <th mat-header-cell *matHeaderCellDef>Note</th>
+    <td mat-cell *matCellDef="let element">
+        <p *ngFor="let item of element.menu">{{ item.note }}</p>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef>Total</th>
+    <td mat-cell *matCellDef="let element">{{element.total_price}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<div>
+    Total Income: {{balances.balance | currency:'Rp '}}
+</div>

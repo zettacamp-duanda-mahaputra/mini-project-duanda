@@ -28,4 +28,15 @@ export class LoginService {
       variables: myForm,
     });
   }
+
+  getCredit(){
+    return this.apollo.query({
+      query: gql`
+        query{
+          getBalanceCredit
+        }
+      `,fetchPolicy:'network-only'
+    })
+  }
+
 }

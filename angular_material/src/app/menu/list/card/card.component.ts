@@ -33,7 +33,6 @@ export class CardComponent implements OnInit {
       width: '500px',
       height: '700px'
     })
-    console.log(data._id);
   }
 
   

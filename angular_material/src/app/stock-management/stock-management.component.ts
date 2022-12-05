@@ -125,7 +125,6 @@ export class StockManagementComponent implements OnInit {
   }
 
   indexingPage(data: any) {
-    console.log(data);
     this.pageIndex = data.pageIndex
     this.pageSize = data.pageSize
 

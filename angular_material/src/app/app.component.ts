@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
 import { AuthService } from './auth.service';
+import { LoginService } from './login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -15,15 +16,22 @@ export class AppComponent implements OnInit {
   isLogin: any
   role: any;
   selectedLang:any
+  public balances:any
   
 
-  constructor(private router: Router, private authService:AuthService, private translate:TranslateService) {}
+  constructor(private router: Router, private authService:AuthService, private translate:TranslateService, private loginService:LoginService) {}
 
   ngOnInit() {
     this.role = this.authService.getRole()
     this.isLogin = this.authService.getToken()
-    console.log(this.isLogin);
-    
+
+    this.getBalance()
+  }
+
+  getBalance(){
+    this.loginService.getCredit().subscribe((data:any)=>{
+      this.balances = data?.data?.getBalanceCredit      
+    })
   }
 
   isLogout() {

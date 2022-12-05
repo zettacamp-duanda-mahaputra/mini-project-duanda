@@ -22,8 +22,6 @@ export class FormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data);
-
     if (this.data) {
       this.myForm.patchValue(this.data);
       this.myForm.controls['name'].disable();

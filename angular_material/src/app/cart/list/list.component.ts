@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { LoginService } from 'src/app/login/login.service';
+import { AppComponent } from 'src/app/app.component';
 
 
 @Component({
@@ -13,19 +15,18 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ListComponent implements OnInit {
   carts: any = [];
+  credit:any
 
-  constructor(private cartService: CartService, private router:Router, private dialog:MatDialog) {}
+  constructor(private cartService: CartService, private router:Router, private dialog:MatDialog, private loginService:LoginService, private appComponent:AppComponent) {}
 
   ngOnInit(): void {
     this.getAll();
   }
 
+
   getAll() {
     this.cartService.get().subscribe((data: any) => {
-      console.log(data);
       this.carts = data?.data?.getCart;
-      console.log(this.carts);
-
     })
   }
 
@@ -55,6 +56,9 @@ export class ListComponent implements OnInit {
             title: 'Success',
             text: 'Checkout Completed',
           }).then(() => {
+            this.loginService.getCredit().subscribe((data:any)=>{              
+              this.appComponent.balances = data.data.getBalanceCredit
+            })
             this.getAll()
           });
         }

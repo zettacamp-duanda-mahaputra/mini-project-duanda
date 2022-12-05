@@ -52,7 +52,6 @@ export class ListComponent implements OnInit {
     this.pageSize = data.pageSize
 
     this.getAll()
-
   }
 
 }

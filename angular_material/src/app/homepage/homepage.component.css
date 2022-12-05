@@ -1,90 +1,176 @@
-.wrap-card{
-  display: flex;
-  top: 0;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100vw;
-  padding-top: 40px;
+.entries {
+  position: relative;
 }
 
-.card{
-  width: 50%;
-}
-
-.k1, .k2{
-  font-size: 50px;
-  
-}
-
-.k1{
+.text-purple {
   color: rgb(129, 56, 161);
 }
 
-.quote{
-  font-size: 35px;
+.wrap-card {
+  display: flex;
+  flex-wrap: wrap;
+  top: 0;
+  justify-content: center;
+  align-items: flex-start;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 40px;
 }
 
-.s1{
-  padding-left: 110px;
+.card {
+  width: 50%;
 }
 
-.btn{
+.k1,
+.k2 {
+  font-size: 50px;
+
+}
+
+.k1 {
+  color: rgb(129, 56, 161);
+}
+
+.quote {
+  font-family: 'Sofia', cursive;
+  font-size: 25px;
+}
+
+.s1 {
+  margin: auto;
+  padding: 30px;
+}
+
+.btn-group {
+  margin-top: 80px;
   display: flex;
   gap: 15px;
 }
 
-.img{
-  padding-left: 100px;
-  padding-right: 40px;
+.so-secction {
+  text-align: center;
+  margin: 0 auto;
+  text-align: center;
+  padding: 50px 0px;
+  position: relative;
+  width: 80%;
 }
 
-.wrapper2{
+.wrapper2 {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
-  padding-left: 60px;
-  padding-right: 60px;
-  overflow: hidden;
 }
 
-.card2{
-  width: calc((100%/3) - 150px);
-  height: 250px;
-  border-radius: 1rem;
-  margin-top: 40px;
-  overflow: hidden;
-}
-
-.card2 img{
-  width: 100%;
-  height: 300px;
-}
-
-.image{
+.card2 {
+  margin:0 auto;
   width: 350px;
   height: 250px;
-  border-radius: 2rem;
+  margin-top: 40px;
+  overflow: hidden;
+  border-radius: 1rem;
+  position: relative;
 }
 
-.best{
-  margin-left: 40px;
+.card2 img {
+  height: 100%;
+  width: 100%;
 }
 
-.best1{
-  font-weight: bolder;
+.disc {
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  font-size: 5rem;
+  margin: auto;
+  color: white;
+  text-align: center;
+  line-height: 3;
+  opacity: 0.3;
+}
+
+.disc::before {
+  content: "disc";
+  font-size: 1.3rem;
+  position: absolute;
+  line-height: 7;
+}
+.disc::after {
+  content: "%";
+}
+
+.card2:hover,
+.card2:hover .disc,
+.disc:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+}
+
+
+.detail-so .recipe_name {
+  color: rgb(129, 56, 161);
+  font-weight: 800;
+  font-size: 1.5rem;
+  margin: 10px;
+}
+
+.detail-so .price {
+  margin: 0;
+}
+.detail-so .price span:nth-child(1){
+  text-decoration: line-through;
+}
+
+.detail-so {
+  position: absolute;
+  background: #ffffff;
+  bottom: 0%;
+  left: 10%;
+  width: 80%;
+}
+
+.image {
+  width: 550px;
+  /* border-radius: 45% 5% 45% 5%; */
+}
+
+.best {
+  margin: 0 auto;
+  width: fit-content;
+  position: relative;
+}
+
+.best::before {
+  content: '';
+  background: url('./../../assets/thumb-bg-twibbon-01.png');
+  background-position: center;
+  background-size: contain;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.best h2 {
+  padding: 10px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  bottom: 0;
+  position: absolute;
+  /* font-family: 'Sofia', cursive; */
+}
+
+.best h2 span:nth-child(2) {
   color: rgb(129, 56, 161);
 }
 
-h2{
+h2 {
   margin: 0;
 }
-
-
-
-
-
-
-
-
-
-

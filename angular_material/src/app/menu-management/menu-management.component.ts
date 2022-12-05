@@ -171,9 +171,7 @@ export class MenuManagementComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (!result) return;
 
-      this.menuManagementService.updateSpecial(result).subscribe((data) => {
-        console.log(data);
-        
+      this.menuManagementService.updateSpecial(result).subscribe((data) => {        
         Swal.fire({
           icon: 'success',
           title: 'Success',

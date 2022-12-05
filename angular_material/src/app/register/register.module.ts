@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin/admin.component';
-import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms'
+import { UserModule } from './user/user.module';
+
+
 
 const subRoutes:Routes = [
   { path:'', pathMatch:'full', redirectTo:'/Register/RegisterUser'},
@@ -22,18 +24,17 @@ const routes: Routes = [
   declarations: [
     RegisterComponent,
     AdminComponent,
-    UserComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    UserModule
   ],
   exports:[
     RegisterComponent,
-    AdminComponent,
-    UserComponent
+    AdminComponent
   ]
 })
 export class RegisterModule { }

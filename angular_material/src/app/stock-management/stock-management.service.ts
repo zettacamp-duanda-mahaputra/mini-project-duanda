@@ -6,6 +6,7 @@ import { map } from 'rxjs'
   providedIn: 'root',
 })
 export class StockManagementService {
+
   constructor(private apollo: Apollo) {}
 
   getAllIngre() {
@@ -61,7 +62,7 @@ export class StockManagementService {
     return this.apollo.query({
       query: gql`
         query getOneIngredient($id: ID){
-          getOneIngredient(id: $id) {
+          getOneIngredient(id: $id){
             _id
             name
             stock
@@ -106,7 +107,7 @@ export class StockManagementService {
   deleteIngredient(id:any){
     return this.apollo.mutate({
       mutation: gql`
-      mutation deleteIngredient($id:ID, ){
+      mutation deleteIngredient($id:ID){
         deleteIngredient(id:$id)
       }`,
       variables:{id}

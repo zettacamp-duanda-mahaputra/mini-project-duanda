@@ -1,1 +1,45 @@
-<p>user works!</p>
+<div class="wrapper">
+  <div class="card img"></div>
+
+  <form class="form card" [formGroup]="myForm">
+
+    <mat-form-field class="head" appearance="legacy">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="first_name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="last_name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        formControlName="password"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div class="btn">
+      <button mat-raised-button color="primary" (click)="onSubmit()">
+        Register
+      </button>
+    </div>
+  </form>
+</div>
