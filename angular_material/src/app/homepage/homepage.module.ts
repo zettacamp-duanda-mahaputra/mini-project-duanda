@@ -10,6 +10,10 @@ import { LoginComponent } from '../login/login.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { environment } from "../../environments/environment.prod";
 import { initializeApp } from "firebase/app";
+import { DialogComponent } from './dialog/dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 initializeApp(environment.firebase);
 
@@ -28,7 +32,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    HomepageComponent
+    HomepageComponent,
+    DialogComponent
   ],
   imports: [
     CommonModule,
@@ -43,9 +48,12 @@ const routes: Routes = [
         deps: [HttpClient]
       },
     }),
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
-    HomepageComponent
+    HomepageComponent,
+    DialogComponent
   ]
 })
 export class HomepageModule { }

@@ -1,7 +1,21 @@
-div {
+.card{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  padding: 60px;
+  padding-left: 60px;
+  padding-right: 60px;
+  width: 100%;
 }
+
+.wrap{
+  width: 100%;
+  padding-bottom: 60px;
+}
+
+.input{
+  padding-top: 60px;
+  padding-left: 90px;
+
+}
+

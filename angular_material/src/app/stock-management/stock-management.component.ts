@@ -4,8 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
 import { FormComponent } from './form/form.component';
-import { Drop } from './model/drop';
-import { Dropdown } from './model/dropdown';
 import { StockManagementService } from './stock-management.service';
 
 @Component({
@@ -17,8 +15,7 @@ export class StockManagementComponent implements OnInit {
   dataSource = new MatTableDataSource();
   displayedColumns: any[] = ['name', 'stock', 'status', 'action'];
 
-  availableSources: Dropdown[] = Drop;
-  filterStatus:any = null 
+  
 
   defaultFilter = ""
   filterName = new FormControl(null)
@@ -52,7 +49,6 @@ export class StockManagementComponent implements OnInit {
     }
 
     const match = {
-      status: this.filterStatus,
       name: this.inputName
     }
 
@@ -118,6 +114,11 @@ export class StockManagementComponent implements OnInit {
             'Stock has been deleted.',
             'success'
           )
+        }, err=>{
+          Swal.fire({
+            icon:'error',
+            text: err.message
+          })
         })
       }
       this.getAll();
@@ -132,9 +133,5 @@ export class StockManagementComponent implements OnInit {
 
   }
 
-  onFilterStatus(event:any){
-    this.filterStatus = event
-    this.getAll()
-    
-  }
+
 }

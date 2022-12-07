@@ -35,7 +35,7 @@
      data-aos-offset="30" class="so-secction">
     <h2>Special <span class="text-purple">Offer</span></h2>
     <div class="wrapper2">
-      <div class="card2" *ngFor="let special of specials">
+      <div class="card2" *ngFor="let special of specials" (click)="openDialog(special)">
         <img [src]="special.image" alt="me">
         <p data-aos="zoom-in" data-aos-delay="500" class="disc">{{special.disc}}</p>
         <div class="detail-so">

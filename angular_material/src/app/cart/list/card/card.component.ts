@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs';
+import Swal from 'sweetalert2';
 import { CartService } from '../../cart.service';
 import { ListComponent } from '../list.component';
 
@@ -30,6 +31,8 @@ export class CardComponent implements OnInit {
     this.avail = a.available;
     this.form()
     this.myForm.patchValue(this.items)
+    console.log(this.items);
+    
 
     this.amountChange()
     this.noteChange() 
@@ -54,7 +57,7 @@ export class CardComponent implements OnInit {
   }
 
   noteChange() {
-    this.myForm.get('note')?.valueChanges.pipe(debounceTime(500)).subscribe((data: any) => {
+    this.myForm.get('note')?.valueChanges?.pipe(debounceTime(500))?.subscribe((data: any) => {
       if (data) {
         this.OnEdit(this.items._id, this.items.amount, data)
       }
@@ -62,15 +65,27 @@ export class CardComponent implements OnInit {
   }
 
   onRemove(item: any) {
-    this.cartService.remove(item).subscribe(() => {
-      this.listComponent.getAll()
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cartService.remove(item).subscribe(() => {
+          Swal.fire(
+            'Deleted!',
+            'Menu has been deleted.',
+            'success'
+          ).then(()=>{
+            this.listComponent.getAll()
+          })
+        })
+      }
+      
     })
-
-    if(localStorage.getItem('addCart')){
-      localStorage.removeItem('addCart')
-    }
-    
-
   }
 
   OnEdit(id: any, amount: any, note: any) {

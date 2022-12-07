@@ -1,17 +1,22 @@
-<mat-form-field>
-  <mat-label>Filter Name</mat-label>
-  <input matInput [formControl]="filterName" [(ngModel)]="defaultFilter"/>
-</mat-form-field>
 
-<div>
-  <app-card *ngFor="let item of menus" [items]="item"></app-card>
+<div class="wrap">
+  <div class="input">
+    <mat-form-field appearance="outline" class="filterName">
+      <mat-label><mat-icon>search</mat-icon> Search for Menu</mat-label>
+      <input matInput [formControl]="filterName" />
+    </mat-form-field>
+  </div>
+
+
+  <div class="card">
+    <app-card *ngFor="let item of menus" [items]="item"></app-card>
+  </div>
+
+  <mat-paginator
+    [length]="itemLength"
+    [pageSize]="pageSize"
+    aria-label="Select page"
+    (page)="pageEvent = indexingPage($event)"
+  >
+  </mat-paginator>
 </div>
-
-<mat-paginator
-[length]="itemLength"
-[pageSize]="pageSize"
-aria-label="Select page"
-(page)="pageEvent = indexingPage($event)"
->
-</mat-paginator>
-

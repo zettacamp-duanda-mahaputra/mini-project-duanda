@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'Cart', canActivate:[CartGuard], loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
   { path: 'Login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
   { path: 'Menu', loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule) },
-  { path: 'MenuManagement', canActivate:[MenuGuard] ,loadChildren: () => import('./menu-management/menu-management.module').then(m => m.MenuManagementModule) },
+  { path: 'F&BManagement', canActivate:[MenuGuard] ,loadChildren: () => import('./menu-management/menu-management.module').then(m => m.MenuManagementModule) },
   { path: 'StockManagement',canActivate:[StockGuard], loadChildren: () => import('./stock-management/stock-management.module').then(m => m.StockManagementModule) },
   { path: 'OrderList',canActivate:[OrderGuard], loadChildren: () => import('./order-list/order-list.module').then(m => m.OrderListModule) }
 ];

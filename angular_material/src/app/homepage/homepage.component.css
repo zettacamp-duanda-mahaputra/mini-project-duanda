@@ -109,6 +109,7 @@
 .disc:hover {
   background-color: rgba(0, 0, 0, 0.3);
   opacity: 1;
+  cursor: pointer;
 }
 
 
@@ -136,7 +137,6 @@
 
 .image {
   width: 550px;
-  /* border-radius: 45% 5% 45% 5%; */
 }
 
 .best {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,8 @@ export class OrderListService {
           }
         }
       `,fetchPolicy:'network-only', variables:{paginator}
-    })
+    }).pipe(map((result:any)=>{
+      return result?.data?.getBalance;
+    }))
   }
 }

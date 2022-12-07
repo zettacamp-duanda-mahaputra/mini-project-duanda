@@ -1,3 +1,4 @@
+<h2>Transaction History</h2>
 <table
   mat-table
   [dataSource]="dataSource"
@@ -43,4 +44,4 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 
-<button mat-raised-button color="warn" (click)="onClose()">Close</button>
+<button class="close" mat-raised-button color="warn" (click)="onClose()">Close</button>

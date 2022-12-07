@@ -18,35 +18,17 @@
     >
       {{ "app.menu" | translate }}
     </button>
-    <button
-      mat-button
-      [routerLink]="['MenuManagement']"
-      routerLinkActive="active"
-      *ngIf="role == 'Admin'"
-    >
-      {{ "app.menu-management" | translate }}
-    </button>
-    <button
-      mat-button
-      [routerLink]="['StockManagement']"
-      routerLinkActive="active"
-      *ngIf="role == 'Admin'"
-    >
-      {{ "app.stock-management" | translate }}
-    </button>
     <button mat-button [routerLink]="['Cart']" routerLinkActive="active">
       <mat-icon>shopping_cart</mat-icon>
     </button>
   </div>
-  <button mat-button *ngFor="let menu of menus" [routerLink]="[menu?.routing]">
-    {{ menu?.page }}
-  </button>
   <button mat-button [matMenuTriggerFor]="menu">
     <mat-icon>account_circle</mat-icon>
   </button>
-  <mat-menu #menu="matMenu">
-    <p>{{ role }}</p>
-    <p *ngIf="isLogin">{{balances?.credit | currency:'Rp '}}</p>
+  <mat-menu class="menu" #menu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="view" *ngIf="role == 'Admin'"><mat-icon>supervisor_account</mat-icon> Admin</button>
+    <p *ngIf="role == 'User'"><mat-icon>person</mat-icon> Customer</p>
+    <p *ngIf="isLogin"><mat-icon>credit_card</mat-icon>{{ balances?.credit | currency : "Rp " }}</p>
     <button mat-menu-item *ngIf="isLogin" (click)="isLogout()">
       {{ "app.logout" | translate }}
     </button>
@@ -65,6 +47,33 @@
       *ngIf="!isLogin"
     >
       {{ "app.login" | translate }}
+    </button>
+  </mat-menu>
+
+  <mat-menu class="view" #view="matMenu">
+    <button
+      mat-button
+      [routerLink]="['F&BManagement']"
+      routerLinkActive="active"
+      *ngIf="role == 'Admin'"
+    >
+      {{ "app.menu-management" | translate }}
+    </button>
+    <button
+      mat-button
+      [routerLink]="['StockManagement']"
+      routerLinkActive="active"
+      *ngIf="role == 'Admin'"
+    >
+      {{ "app.stock-management" | translate }}
+    </button>
+    <button
+      mat-button
+      [routerLink]="['OrderList']"
+      routerLinkActive="active"
+      *ngIf="role == 'Admin'"
+    >
+      {{ "app.order-list" | translate }}
     </button>
   </mat-menu>
   <div class="lang">

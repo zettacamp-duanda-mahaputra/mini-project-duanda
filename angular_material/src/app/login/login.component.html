@@ -4,7 +4,9 @@
     <div class="card img"></div>
     
     <form class="form card" [formGroup]="myForm">
-      <mat-form-field class="head" appearance="legacy">
+      <h2 class="head">Login</h2>
+
+      <mat-form-field appearance="legacy">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" />
       </mat-form-field>
@@ -12,7 +14,7 @@
       <mat-form-field>
         <mat-label>Password</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>

@@ -5,6 +5,10 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import Aos from 'aos';
+import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
+import { CartService } from '../cart/cart.service';
 
 
 @Component({
@@ -15,10 +19,10 @@ import Aos from 'aos';
 export class HomepageComponent implements OnInit {
   message: any = null;
   items: any
-  specials:any
+  specials: any
   user: any
 
-  constructor(private homeService: HomepageService, private router:Router, private authService: AuthService) { }
+  constructor(private homeService: HomepageService, private router: Router, private authService: AuthService, public dialog: MatDialog, private cartService: CartService) { }
 
   ngOnInit(): void {
     const user = this.authService.getUser()
@@ -33,13 +37,13 @@ export class HomepageComponent implements OnInit {
     this.listen()
   }
 
-  getSpecial(){
-    this.homeService.getAll().subscribe((data:any)=>{
-      this.specials = data?.data?.getAllRecipes.data      
+  getSpecial() {
+    this.homeService.getAll().subscribe((data: any) => {
+      this.specials = data?.data?.getAllRecipes.data
     })
   }
 
-  requestPermission() {    
+  requestPermission() {
     const messaging = getMessaging();
 
     getToken(messaging, { vapidKey: environment.firebase.vapidKey }).then((currentToken) => {
@@ -51,7 +55,7 @@ export class HomepageComponent implements OnInit {
       }
     }).catch((err) => {
       console.log('An error occurred while retrieving token. ', err);
-      
+
     });
 
   }
@@ -63,16 +67,46 @@ export class HomepageComponent implements OnInit {
     });
   }
 
-  onCart(){
-    if(this.user){
+  onCart() {
+    if (this.user) {
       this.router.navigate(['Cart'])
-    }else{
-      this.router.navigate(['Login'])
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Cant Acces Cart Before Login',
+      }).then(() => {
+        this.router.navigate(['Login'])
+      })
     }
   }
 
-  onMenu(){
+  onMenu() {
     this.router.navigate(['Menu'])
+  }
+
+  openDialog(data:any) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: data || null
+    })
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (!result) return;
+
+      this.cartService.add(result).subscribe(()=>{
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Data Completed',
+        })
+      },err=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'Failed',
+          text: err.message
+        })
+      })
+    })
   }
 
 }

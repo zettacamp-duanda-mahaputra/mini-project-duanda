@@ -60,3 +60,13 @@ button.active{
   padding-right: 5px;
   border-radius: 2rem;
 }
+
+.view{
+  width: 100%;
+}
+
+.menu{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

@@ -17,11 +17,10 @@ export class OrderListComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.orderService.get().subscribe((data:any)=>{
-      this.dataSource.data = data.data.getBalance.data
+    this.orderService.get().subscribe((data:any)=>{      
+      this.dataSource.data = data?.data
 
-      this.balances = data.data.getBalance
-
+      this.balances = data
     })
   }
 

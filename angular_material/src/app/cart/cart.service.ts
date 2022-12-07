@@ -17,6 +17,10 @@ export class CartService {
             order_status
             total_price
             menu {
+              price{
+                pcs
+                total
+              }
               _id
               amount
               note
@@ -104,7 +108,7 @@ export class CartService {
     return this.apollo.query({
       query: gql`
       query getUserTransactionHistory{
-        getUserTransactionHistory{
+        getUserTransactionHistory(paginator:{limit:5, page:0}){
           data {
             menu {
               price{

@@ -21,6 +21,7 @@
 img{
   width: 110%;
   margin:0;
+  height: 300px;
   position: absolute;
 }
 
@@ -36,3 +37,7 @@ img{
   z-index: 1;
   
 }
+
+mat-card-content span:nth-child(1){
+  text-decoration: line-through;
+} 

@@ -9,21 +9,10 @@
       <mat-icon>add</mat-icon>
       Add
     </button>
-    <mat-form-field>
-      <mat-select placeholder="Filter Status" (valueChange)="onFilterStatus($event)">
-        <mat-option value='all'>Select</mat-option>
-        <mat-option
-          *ngFor="let source of availableSources"
-          [value]="source.value"
-        >
-          {{ source.status }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Filter Name</mat-label>
-      <input matInput [formControl]="filterName" [(ngModel)]="defaultFilter"/>
+    <mat-form-field appearance="outline">
+      <mat-label><mat-icon>search</mat-icon> Search for Menu</mat-label>
+      <input matInput [formControl]="filterName"/>
     </mat-form-field>
   </div>
 

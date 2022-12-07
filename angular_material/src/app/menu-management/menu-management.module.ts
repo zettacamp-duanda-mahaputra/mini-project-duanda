@@ -10,7 +10,7 @@ import { DialogSpecialComponent } from './dialog-special/dialog-special.componen
 
 
 const routes: Routes = [
-  {path:'', component: MenuManagementComponent, title:'Menu Management'}
+  {path:'', component: MenuManagementComponent, title:'F&B Management'}
 ]
 
 

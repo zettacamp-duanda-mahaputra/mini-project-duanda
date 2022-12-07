@@ -22,6 +22,8 @@ export class MenuService {
               recipe_name
               image
               description
+              specialOver
+              disc
               ingredients {
                 ingredient_id {
                   _id

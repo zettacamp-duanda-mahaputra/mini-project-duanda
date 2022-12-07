@@ -58,13 +58,7 @@ export class AppComponent implements OnInit {
     })
   }
 
-  onCart() {
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'Cant Acces Cart Before Login',
-    });
-  }
+
 
   setLang(event: any) {
     if (event.checked == true) {

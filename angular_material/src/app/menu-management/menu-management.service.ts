@@ -126,6 +126,7 @@ export class MenuManagementService {
           disc
           recipe_name
           price
+          available
         }
       }`, variables:{id, specialOver, disc}
     })

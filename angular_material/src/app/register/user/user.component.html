@@ -2,8 +2,8 @@
   <div class="card img"></div>
 
   <form class="form card" [formGroup]="myForm">
-
-    <mat-form-field class="head" appearance="legacy">
+    <h2 class="head">Register</h2>
+    <mat-form-field appearance="legacy">
       <mat-label>First Name</mat-label>
       <input matInput formControlName="first_name" />
     </mat-form-field>
@@ -26,6 +26,7 @@
         formControlName="password"
       />
       <button
+        type="button"
         mat-icon-button
         matSuffix
         (click)="hide = !hide"

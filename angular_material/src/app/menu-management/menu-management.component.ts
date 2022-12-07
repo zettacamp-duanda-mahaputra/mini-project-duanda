@@ -187,6 +187,13 @@ export class MenuManagementComponent implements OnInit {
         }).then(() => {
           this.getAll();
         });
+      }, err=>{
+        Swal.fire({
+          icon:'info',
+          text: err.message
+        }).then(()=>{
+          this.getAll();
+        })
       });
 
     })

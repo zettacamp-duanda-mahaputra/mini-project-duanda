@@ -31,3 +31,11 @@ img{
 .active{
   background-color: green;
 }
+
+.filter{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+

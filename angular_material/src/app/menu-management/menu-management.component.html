@@ -9,26 +9,29 @@
       <mat-icon>add</mat-icon>
       Add
     </button>
-    
-    <mat-form-field>
-      <mat-select
-        placeholder="Filter Status"
-        (valueChange)="onFilterStatus($event)"
-      >
-        <mat-option value="all">Select</mat-option>
-        <mat-option
-          *ngFor="let source of availableSources"
-          [value]="source.value"
-        >
-          {{ source.status }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Filter Name</mat-label>
-      <input matInput [formControl]="filterName" [(ngModel)]="defaultFilter"/>
-    </mat-form-field>
+    <div class="filter">
+      <mat-form-field appearance="outline">
+        <mat-label><mat-icon>search</mat-icon> Search for Menu</mat-label>
+        <input matInput [formControl]="filterName"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-select
+          placeholder="Status"
+          (valueChange)="onFilterStatus($event)"
+        >
+          <mat-option value="all">All</mat-option>
+          <mat-option
+            *ngFor="let source of availableSources"
+            [value]="source.value"
+          >
+            {{ source.status }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
   </div>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -59,6 +62,7 @@
           [checked]="element.status == 'publish'"
           matTooltip="{{ element.status }}"
           (change)="onClick($event, element)"
+          [disabled]="element.specialOver"
         >
         </mat-slide-toggle>
       </td>

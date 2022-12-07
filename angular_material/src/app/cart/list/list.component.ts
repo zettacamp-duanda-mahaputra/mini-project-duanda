@@ -62,13 +62,19 @@ export class ListComponent implements OnInit {
             this.getAll()
           });
         }
+      }, err=>{
+        Swal.fire({
+          icon: 'error',
+          title:'Failed',
+          text: err.message
+        })
       });
   }
 
   openDialog(data:any){
     const dialogRef = this.dialog.open(DialogComponent,{
       data: data,
-      width:'100%'
+      width: '800px'
     })
   }
 }
