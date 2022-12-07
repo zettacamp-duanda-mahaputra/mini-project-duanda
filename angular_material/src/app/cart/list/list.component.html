@@ -3,9 +3,9 @@
   <img *ngIf="!carts?.menu?.length" src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-png-image-download-pngm-2.png" alt="me">
 </div>
 <app-card *ngFor="let item of carts?.menu" [items]="item"></app-card>
-<div class="total">
+<div class="total" *ngIf="carts?.menu?.length">
   <h3>Total: {{carts?.total_price | currency:'Rp '}}</h3>
-  <button class="checkout" mat-raised-button [disabled]="!carts?.menu?.length" color="accent" (click)="onCheckOut()">Checkout</button>
+  <button class="checkout" mat-raised-button color="accent" (click)="onCheckOut()">Checkout</button>
 </div>
 <div class="history"><button mat-raised-button color="primary" (click)="openDialog(carts)">History</button></div>
 

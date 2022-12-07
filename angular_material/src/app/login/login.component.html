@@ -19,12 +19,16 @@
         </button>
       </mat-form-field>
 
+      <p class="forgot"><span (click)="onForgot()">Forgot Password?</span></p> 
+
       <div class="btn">
         <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">
           Login
         </button>
       </div>
-
+      <div class="text">
+        <p>Need an account? <span class="signUp" (click)="onSignUp()">SIGNUP</span></p>
+      </div>
     </form>
   </div>
   

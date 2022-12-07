@@ -44,10 +44,16 @@ export class LoginComponent implements OnInit {
     localStorage.removeItem('addCart')
     if (addCart) {
       this.cartService.add(addCart).subscribe(() => {
-        this.router.navigate(['Cart']).then(() => {
-          window.location.reload();
-          this.get()
-        });
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Login Success'
+        }).then(()=>{
+          this.router.navigate(['Cart']).then(() => {
+            window.location.reload();
+            this.get()
+          });
+        })
       })
     }
     else {
@@ -64,14 +70,17 @@ export class LoginComponent implements OnInit {
       })
 
     }
-
-
-
-
   }
 
   errorHandler(error: any) {
     Swal.fire('Failed', 'Not Completed', 'error');
+  }
 
+  onForgot(){
+    this.router.navigate(['ForgotPassword'])
+  }
+
+  onSignUp(){
+    this.router.navigate(['/Register/RegisterUser'])
   }
 }

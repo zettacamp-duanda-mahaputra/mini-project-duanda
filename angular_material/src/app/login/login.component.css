@@ -53,3 +53,26 @@ button{
 .show{
   margin-bottom: 10px;
 }
+
+.forgot{
+  cursor: pointer;
+}
+
+.forgot:hover{
+  text-decoration: underline;
+  color: blueviolet;
+}
+
+.text{
+  display: flex;
+  justify-content: center;
+}
+
+.signUp{
+  cursor: pointer;
+}
+
+.signUp:hover{
+  text-decoration: underline;
+  color: blueviolet;
+}

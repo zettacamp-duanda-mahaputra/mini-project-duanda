@@ -15,8 +15,10 @@ const routes: Routes = [
   { path: 'Menu', loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule) },
   { path: 'F&BManagement', canActivate:[MenuGuard] ,loadChildren: () => import('./menu-management/menu-management.module').then(m => m.MenuManagementModule) },
   { path: 'StockManagement',canActivate:[StockGuard], loadChildren: () => import('./stock-management/stock-management.module').then(m => m.StockManagementModule) },
-  { path: 'OrderList',canActivate:[OrderGuard], loadChildren: () => import('./order-list/order-list.module').then(m => m.OrderListModule) }
-];
+  { path: 'OrderList',canActivate:[OrderGuard], loadChildren: () => import('./order-list/order-list.module').then(m => m.OrderListModule) },
+  { path: 'ForgotPassword', loadChildren: () => import('./forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule) },
+  { path: 'PasswordReset/:token', loadChildren: () => import('./reset-password/reset-password.module').then(m => m.ResetPasswordModule) }
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

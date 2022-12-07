@@ -44,4 +44,8 @@ export class UserComponent implements OnInit {
    
   }
 
+  onSignIn(){
+    this.router.navigate(['Login'])
+  }
+
 }
