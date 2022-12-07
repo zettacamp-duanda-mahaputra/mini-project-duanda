@@ -2,6 +2,9 @@
   width: 1000px;
   margin: 0 auto;
   margin-top: 50px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
 }
 
 table{
@@ -11,6 +14,8 @@ table{
 }
 
 .balance{
-  display: flex;
-  justify-content: flex-end;
+  margin-top: 20px;
+  width: fit-content;
+  padding: 1rem;
+  background-color: whitesmoke;
 }

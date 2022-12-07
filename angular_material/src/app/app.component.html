@@ -26,9 +26,21 @@
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu class="menu" #menu="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="view" *ngIf="role == 'Admin'"><mat-icon>supervisor_account</mat-icon> Admin</button>
-    <p *ngIf="role == 'User'"><mat-icon>person</mat-icon> Customer</p>
-    <p *ngIf="isLogin"><mat-icon>credit_card</mat-icon>{{ balances?.credit | currency : "Rp " }}</p>
+    <div class="admin" *ngIf="role == 'Admin'">
+      <mat-icon >supervisor_account</mat-icon>
+      <button mat-menu-item [matMenuTriggerFor]="view">Admin</button>
+    </div>
+    <div class="user" *ngIf="role == 'User'">
+      <mat-icon>person</mat-icon>
+      <p>Customer</p>
+    </div>
+    <div class="credit" *ngIf="isLogin">
+      <mat-icon>credit_card</mat-icon>
+      <p>
+        {{ balances?.credit | currency : "Rp " }}
+      </p>
+    </div>
+
     <button mat-menu-item *ngIf="isLogin" (click)="isLogout()">
       {{ "app.logout" | translate }}
     </button>
@@ -50,7 +62,7 @@
     </button>
   </mat-menu>
 
-  <mat-menu class="view" #view="matMenu">
+  <mat-menu id="h-fit" class="view" #view="matMenu">
     <button
       mat-button
       [routerLink]="['F&BManagement']"

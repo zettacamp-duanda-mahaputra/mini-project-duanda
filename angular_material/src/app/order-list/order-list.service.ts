@@ -15,6 +15,10 @@ export class OrderListService {
         query GetBalance($paginator:paginator) {
           getBalance(paginator:$paginator) {
             balance
+            paginator{
+              total_items
+              total_page
+            }
             data {
               menu {
                 recipe_id {

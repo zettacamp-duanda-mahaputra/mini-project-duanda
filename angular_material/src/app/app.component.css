@@ -61,12 +61,24 @@ button.active{
   border-radius: 2rem;
 }
 
-.view{
-  width: 100%;
+#h-fit {
+  overflow-y: hidden;
 }
 
 .menu{
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+.admin, .user, .credit{
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.admin mat-icon{
+  width: fit-content;
+  padding: 0 0.1rem;
 }

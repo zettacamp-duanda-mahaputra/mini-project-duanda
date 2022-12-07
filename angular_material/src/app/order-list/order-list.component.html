@@ -60,7 +60,14 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
   
-  <div class="balance">
+  <div class="balance" align="end">
       Total Income: {{balances?.balance | currency:'Rp '}}
   </div>
+  <mat-paginator
+  [length]="itemLength"
+  [pageSize]="pageSize"
+  aria-label="Select page"
+  (page)="pageEvent = indexingPage($event)"
+>
+</mat-paginator>
 </div>

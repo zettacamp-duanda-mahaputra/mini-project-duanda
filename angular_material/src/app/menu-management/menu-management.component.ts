@@ -23,7 +23,7 @@ export class MenuManagementComponent implements OnInit {
     'status',
     'highlight',
     'special',
-    'action',
+    'action'
   ];
 
   availableSources: Dropdown[] = Drop;
