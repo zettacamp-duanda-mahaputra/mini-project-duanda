@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MenuManagementComponent } from '../menu-management.component';
 
 @Component({
   selector: 'app-dialog-special',
@@ -9,7 +8,7 @@ import { MenuManagementComponent } from '../menu-management.component';
   styleUrls: ['./dialog-special.component.css']
 })
 export class DialogSpecialComponent implements OnInit {
-  discount = new FormControl(null)
+  discount = new FormControl(null, [Validators.max(100), Validators.min(0)])
 
   constructor(public dialogRef: MatDialogRef<DialogSpecialComponent>,
     @Inject(MAT_DIALOG_DATA) private data: any) { }

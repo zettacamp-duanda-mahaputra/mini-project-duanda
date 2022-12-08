@@ -1,7 +1,7 @@
 <h2>Add Discount</h2>
 <mat-form-field appearance="fill">
   <mat-label>Discount</mat-label>
-  <input type="number" [formControl]="discount" matInput />
+  <input type="number" min="0" [formControl]="discount" matInput />
 </mat-form-field>
 <br>
 <button class="cancel" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
