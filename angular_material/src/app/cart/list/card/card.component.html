@@ -4,7 +4,7 @@
     <div>
       <mat-card-title>{{ items?.recipe_id?.recipe_name }}</mat-card-title>
       <mat-card-subtitle>Available: {{ items?.recipe_id?.available }}</mat-card-subtitle>
-      <mat-card-subtitle>{{ items?.price.pcs | currency: "Rp " }}</mat-card-subtitle>
+      <mat-card-subtitle>{{ items?.price?.pcs | currency: "Rp " }}</mat-card-subtitle>
     </div>
   </div>
   <mat-card-actions align="end" class="input">
@@ -21,9 +21,12 @@
         <input type="text" matInput formControlName="note" />
       </mat-form-field>
     </div>
+    <div class="price-pcs">
+      <p class="total-price">Total Price: {{items?.amount * items?.price?.pcs | currency:'Rp '}}</p>
+    </div>
   </mat-card-actions>
   <div class="btn">
-    <button mat-button (click)="onRemove(items._id)"><mat-icon>delete</mat-icon></button>
+    <button mat-button (click)="onRemove(items._id)"><mat-icon [ngStyle]="{color:'red'}">delete</mat-icon></button>
   </div>
 </mat-card>
 

@@ -22,7 +22,8 @@
   top: 0;
   margin-top: 50px;
   margin-right: 30px;
-  
+  display: flex;
+  flex-direction: column;
 }
 
 .btn{
@@ -36,4 +37,9 @@
 .flex img{
   width: 300px;
   height: 200px;
+}
+
+.total-price{
+  color: blueviolet;
+  font-weight: bolder;
 }

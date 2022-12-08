@@ -18,7 +18,7 @@
     >
       {{ "app.menu" | translate }}
     </button>
-    <button mat-button [routerLink]="['Cart']" routerLinkActive="active">
+    <button mat-button [routerLink]="['Cart']" routerLinkActive="active" (click)="onCart()">
       <mat-icon>shopping_cart</mat-icon>
     </button>
   </div>

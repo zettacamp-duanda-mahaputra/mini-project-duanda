@@ -10,6 +10,7 @@ export const environment = {
     appId: "1:738057478646:web:1887444f60df21bb1a27d7",
     measurementId: "G-YLPYL9Q4C2",
     vapidKey: "BDsieRJlxCGTSYtK4DxVKeueeAKZxYPrOy8saMDEmdNUvEoOFk7CgG_ZUvOTeVw4E_8isbrtHvML0j0gBnI4j3Q"
-  }
+  },
+  apiUrl : 'https://node.donormerahyogyakarta.com/graphql'
 };
 

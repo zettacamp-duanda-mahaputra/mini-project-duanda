@@ -126,7 +126,22 @@ export class MenuManagementComponent implements OnInit {
     const status = event.checked ? 'publish' : 'unpublish';
 
     this.menuManagementService.updateStatus(status, element._id).subscribe(() => {
-      this.getAll()
+      if(status == 'publish'){
+        Swal.fire({
+          icon:'success',
+          text:'menu published'
+        }).then(()=>{
+          this.getAll()
+        })
+      }else{
+        Swal.fire({
+          icon:'info',
+          text:'menu unpublished'
+        }).then(()=>{
+          this.getAll()
+        })
+      }
+     
     });
   }
 
@@ -134,7 +149,22 @@ export class MenuManagementComponent implements OnInit {
     const highlight = event.checked ? true : false;
 
     this.menuManagementService.updateHighlight(highlight, element._id).subscribe(() => {
-      this.getAll()
+      if(highlight == true){
+        Swal.fire({
+          icon:'success',
+          text:'menu add to menu highlight'
+        }).then(()=>{
+          this.getAll()
+        })
+      }else{
+        Swal.fire({
+          icon:'info',
+          text:'menu remove from menu highlight'
+        }).then(()=>{
+          this.getAll()
+        })
+      }
+      
     })
   }
 

@@ -68,4 +68,13 @@ export class AppComponent implements OnInit {
     }
     this.translate.use(this.selectedLang)
   }
+
+  onCart(){
+    if(!this.isLogin){
+      Swal.fire({
+        icon:'info',
+        text:'Need login before access cart'
+      })
+    }
+  }
 }

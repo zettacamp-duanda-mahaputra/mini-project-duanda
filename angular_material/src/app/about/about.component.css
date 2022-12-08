@@ -41,3 +41,7 @@
 .title-contact{
   margin-bottom: 40px;
 }
+
+.map{
+  overflow: hidden;
+}

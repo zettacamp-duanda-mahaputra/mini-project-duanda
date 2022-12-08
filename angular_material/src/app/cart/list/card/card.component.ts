@@ -12,7 +12,7 @@ import { ListComponent } from '../list.component';
 })
 export class CardComponent implements OnInit {
   @Input() items: any;
-
+ 
   amount: any
   avail:any
   myForm:any = FormGroup
