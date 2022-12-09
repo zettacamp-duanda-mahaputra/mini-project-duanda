@@ -5,6 +5,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
+  padding-left: 40px;
+  padding-right: 500px;
 }
 
 .contact{
@@ -20,8 +22,11 @@
   height: 300px;
   margin: 20px;
   border-radius: 1rem;
-  padding-left: 20px;
   box-shadow: 5px 5px 10px black;
+}
+
+.p-1{
+  padding-left: 20px;
 }
 
 .socmed{
