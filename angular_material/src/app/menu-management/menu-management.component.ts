@@ -21,6 +21,7 @@ export class MenuManagementComponent implements OnInit {
     'receipe_name',
     'image',
     'price',
+    'available',
     'status',
     'highlight',
     'special',
