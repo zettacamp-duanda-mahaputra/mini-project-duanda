@@ -31,7 +31,6 @@ export class CardComponent implements OnInit {
     this.avail = a.available;
     this.form()
     this.myForm.patchValue(this.items)
-    console.log(this.items);
     
 
     this.amountChange()

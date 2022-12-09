@@ -14,7 +14,6 @@ export class DialogSpecialComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private data: any) { }
 
   ngOnInit(): void {
-    console.log(this.data);
     if(this.data){
       this.discount.patchValue(this.data.disc)
     }
