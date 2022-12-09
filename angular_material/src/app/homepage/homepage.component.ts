@@ -21,6 +21,7 @@ export class HomepageComponent implements OnInit {
   items: any
   specials: any
   user: any
+  isLogin: any
 
   constructor(private homeService: HomepageService, private router: Router, private authService: AuthService, public dialog: MatDialog, private cartService: CartService) { }
 
@@ -85,28 +86,11 @@ export class HomepageComponent implements OnInit {
     this.router.navigate(['Menu'])
   }
 
-  openDialog(data:any) {
+  openDialog(data: any) {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: data || null
     })
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (!result) return;
-
-      this.cartService.add(result).subscribe(()=>{
-        Swal.fire({
-          icon: 'success',
-          title: 'Success',
-          text: 'Data Completed',
-        })
-      },err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'Failed',
-          text: err.message
-        })
-      })
-    })
   }
 
 }

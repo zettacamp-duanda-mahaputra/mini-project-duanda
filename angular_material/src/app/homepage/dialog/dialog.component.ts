@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
+import { CartService } from 'src/app/cart/cart.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,32 +18,88 @@ export class DialogComponent implements OnInit {
     note: new FormControl(null)
   })
 
-  constructor(public dialogRef:MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) private data: any) { }
+  isLogin: any
+
+  constructor(public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) private data: any, private authService: AuthService, private router: Router, private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.isLogin = this.authService.getToken()
   }
 
-  onSubmit(){
-    const value = {
-      addToCartId: this.data._id,
-      ...this.myForm.value
-    };
+  onSubmit() {
+    if (!this.isLogin) {
+      const val: any = {
+        addToCartId: this.data._id,
+        ...this.myForm.value,
+      };
 
-    if(this.myForm.invalid){
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Data not Completed',
-      });
+        title: 'Do you have an account?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Login',
+        denyButtonText: `No, Register`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            icon: 'info',
+            text: 'Please Login to complete your transaction'
+          })
+          this.router.navigate(['Login']).then(() => {
+            localStorage.setItem('addCart', JSON.stringify(val))
+          })
+          this.dialogRef.close(val)
+        }
+        else if (result.isDenied) {
+          Swal.fire({
+            icon: 'info',
+            text: 'Please register to complete your transaction'
+          })
+          this.router.navigate(['/Register/RegisterUser']).then(() => {
+            localStorage.setItem('addCart', JSON.stringify(val))
+          })
+          this.dialogRef.close(val)
+        }
+      })
     }
     else {
-      console.log(value);
-      
-      this.dialogRef.close(value);
+      if (this.myForm.valid) {
+
+
+        const val: any = {
+          addToCartId: this.data._id,
+          ...this.myForm.value,
+        };
+
+        this.cartService.add(val).subscribe(() => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Menu added',
+          });
+        }, err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'error',
+            text: err.message
+          });
+        })
+        this.dialogRef.close(val)
+
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'error',
+          text: 'data not completed'
+        });
+      }
     }
+    
+
+
   }
 
-  onCancel(){
+  onCancel() {
     this.dialogRef.close()
   }
 

@@ -4,27 +4,35 @@
     <mat-label>Name</mat-label>
     <input matInput formControlName="recipe_name" />
   </mat-form-field>
-  <br>
+  <br />
   <mat-form-field class="input" appearance="fill">
     <mat-label>Price</mat-label>
     <input matInput formControlName="price" />
   </mat-form-field>
-  <br>
+  <br />
   <mat-form-field class="input" appearance="fill">
     <mat-label>Image</mat-label>
     <input matInput formControlName="image" />
   </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
 
-  
   <div formArrayName="ingredients">
     <div *ngFor="let ingredient of ingredientsForms.controls; let i = index">
       <div [formGroupName]="i">
-        <h3>Ingredient {{i + 1}}</h3>
+        <h3>Ingredient {{ i + 1 }}</h3>
 
         <mat-form-field class="input" appearance="fill">
           <mat-label>Name</mat-label>
-          <mat-select matInput formControlName="ingredient_id" >
-            <mat-option *ngFor="let ingredient of stockIngredient" [value]="ingredient._id">{{ingredient.name}}</mat-option>
+          <mat-select matInput formControlName="ingredient_id">
+            <mat-option
+              *ngFor="let ingredient of stockIngredient"
+              [value]="ingredient._id"
+              >{{ ingredient.name }}</mat-option
+            >
           </mat-select>
         </mat-form-field>
 
@@ -33,13 +41,35 @@
           <input type="number" matInput formControlName="stock_used" />
         </mat-form-field>
 
-        <button class="btn-del" color="warn" type="button" mat-raised-button (click)="removeForm(i)" *ngIf="ingredientsForms.length > 1">Delete
+        <button
+          class="btn-del"
+          color="warn"
+          type="button"
+          mat-raised-button
+          (click)="removeForm(i)"
+          *ngIf="ingredientsForms.length > 1"
+        >
+          Delete
         </button>
       </div>
     </div>
-    <button type="button" mat-raised-button color="prmary" (click)="addIngredients()">Add Ingredient</button>
+    <button
+      type="button"
+      mat-raised-button
+      color="prmary"
+      (click)="addIngredients()"
+    >
+      Add Ingredient
+    </button>
   </div>
   <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
-  <button type="submit" mat-raised-button color="primary" class="btn" (click)="onClose()">Submit</button>
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    class="btn"
+    (click)="onClose()"
+  >
+    Submit
+  </button>
 </form>
-

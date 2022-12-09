@@ -17,7 +17,7 @@ export class DialogComponent implements OnInit {
     carts: any;
     ingredients: any = [];
     finalIngredients: string[] = [];
-    bismillahIngredients: any;
+    theIngredients: any;
     myForm: any = FormGroup;
     avail: any;
     isLogin: any
@@ -49,7 +49,7 @@ export class DialogComponent implements OnInit {
             for (let ingredient of this.ingredients)
                 for (let ingre of ingredient) {
                     this.finalIngredients.push(ingre.ingredient_id.name);
-                    this.bismillahIngredients = this.finalIngredients.join(', ');
+                    this.theIngredients = this.finalIngredients.join(', ');
                 }
         }
         const a = {

@@ -5,7 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DialogComponent } from './dialog/dialog.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { DialogSpecialComponent } from './dialog-special/dialog-special.component'
+import { DialogSpecialComponent } from './dialog-special/dialog-special.component';
+import { DialogDetailComponent } from './dialog-detail/dialog-detail.component'
 
 
 
@@ -19,7 +20,8 @@ const routes: Routes = [
   declarations: [
     MenuManagementComponent,
     DialogComponent,
-    DialogSpecialComponent
+    DialogSpecialComponent,
+    DialogDetailComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,10 @@ const routes: Routes = [
     ReactiveFormsModule
   ],
   exports: [
-    MenuManagementComponent
+    MenuManagementComponent,
+    DialogComponent,
+    DialogSpecialComponent,
+    DialogDetailComponent
   ]
 })
 export class MenuManagementModule { }

@@ -8,6 +8,7 @@ import { FormControl } from '@angular/forms';
 import { Dropdown } from './model/dropdown';
 import { Drop } from './model/drop';
 import { DialogSpecialComponent } from './dialog-special/dialog-special.component';
+import { DialogDetailComponent } from './dialog-detail/dialog-detail.component';
 
 @Component({
   selector: 'app-menu-management',
@@ -23,6 +24,7 @@ export class MenuManagementComponent implements OnInit {
     'status',
     'highlight',
     'special',
+    'details',
     'action'
   ];
 
@@ -200,8 +202,6 @@ export class MenuManagementComponent implements OnInit {
   }
 
   openSpecial(data: any) {
-    console.log(data);
-    
     const dialogRef = this.dialog.open(DialogSpecialComponent, {
       data: data || null
     });
@@ -232,6 +232,12 @@ export class MenuManagementComponent implements OnInit {
   onFilterStatus(event:any){
     this.filterStatus = event
     this.getAll()
+  }
+
+  openDetail(data:any){    
+    const dialogRef = this.dialog.open(DialogDetailComponent, {
+      data: data
+    })
   }
 
 

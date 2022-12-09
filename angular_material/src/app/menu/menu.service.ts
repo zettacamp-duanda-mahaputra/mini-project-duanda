@@ -10,6 +10,9 @@ export class MenuService {
   constructor(private apollo: Apollo) { }
 
   get(paginator?: any, match?: any) {
+
+    match.status = 'publish'
+
     return this.apollo.query({
       query: gql`
         query getAllRecipes($paginator: paginator, $match: match) {

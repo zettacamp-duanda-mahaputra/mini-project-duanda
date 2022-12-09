@@ -16,6 +16,7 @@ export class DialogComponent implements OnInit {
     recipe_name: new FormControl(null, Validators.required),
     price: new FormControl(null, [Validators.required,Validators.min(1)]),
     image: new FormControl(null,Validators.required),
+    description: new FormControl(null,Validators.required),
     ingredients: new FormArray([]),
   });
 
@@ -50,6 +51,10 @@ export class DialogComponent implements OnInit {
 
         if (key == 'image') {
           data.image = value;
+        }
+
+        if (key == 'description') {
+          data.description = value;
         }
 
         if (key == 'ingredients') {

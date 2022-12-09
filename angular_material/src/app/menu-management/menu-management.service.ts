@@ -8,12 +8,11 @@ import { map } from 'rxjs';
 export class MenuManagementService {
   constructor(private apollo: Apollo) { }
 
-  get(paginator:any, match:any) {
-     
+  get(paginator: any, match: any) {
+
     if(match.status == 'all'){
       match.status = null
     }
-    
 
     return this.apollo
       .query({
@@ -53,6 +52,8 @@ export class MenuManagementService {
       );
   }
 
+  
+
   add(data: any) {
     data.price = Number(data.price);
     return this.apollo.mutate({
@@ -64,6 +65,7 @@ export class MenuManagementService {
             price
             recipe_name
             status
+            description
           }
         }
       `,
@@ -76,6 +78,7 @@ export class MenuManagementService {
     const price = Number(value.price);
     const image = value.image;
     const ingredients = value.ingredients
+    const description = value.description
 
     return this.apollo.mutate({
       mutation: gql`
@@ -83,7 +86,7 @@ export class MenuManagementService {
           updateRecipeMain(data: $data, id: $id)
         }
       `,
-      variables: { id, data: { recipe_name, price, image, ingredients } },
+      variables: { id, data: { recipe_name, price, image, ingredients, description } },
     });
   }
 
@@ -112,7 +115,7 @@ export class MenuManagementService {
     });
   }
 
-  updateSpecial(data:any) {
+  updateSpecial(data: any) {
     const id = data._id
     const specialOver = true
     const disc = data.discount
@@ -128,7 +131,7 @@ export class MenuManagementService {
           price
           available
         }
-      }`, variables:{id, specialOver, disc}
+      }`, variables: { id, specialOver, disc }
     })
   }
 
