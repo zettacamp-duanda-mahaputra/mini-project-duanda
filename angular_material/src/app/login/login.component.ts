@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
     this.appComponent.role = data.data.loginUser.userType.role
     this.appComponent.userid = data.data.loginUser._id 
     this.appComponent.balances = data.data.loginUser.credit
-    console.log(this.appComponent.balances);
     
 
     let addCart: any = localStorage.getItem('addCart')
@@ -54,9 +53,7 @@ export class LoginComponent implements OnInit {
           title: 'Success',
           text: 'Login Success'
         }).then(()=>{
-          this.router.navigate(['Cart']).then(() => {
-            this.appComponent.balances
-          });
+          this.router.navigate(['Cart'])
         })
       })
     }
@@ -66,10 +63,7 @@ export class LoginComponent implements OnInit {
         title: 'Success',
         text: 'Login Success'
       }).then(() => {
-        localStorage.removeItem('addCart')
-        this.router.navigate(['Homepage']).then(() => {
-          this.appComponent.balances
-        });
+        this.router.navigate(['Homepage'])
       })
 
     }

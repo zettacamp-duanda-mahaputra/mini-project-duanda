@@ -13,12 +13,38 @@
     },
     "home": {
         "btn-menu": "See Menu",
-        "btn-order": "Order Now"
+        "btn-order": "Order Now",
+        "special-offer": "Special Offers",
+        "best": "Our Best Menu"
     },
     "login": {
         "email": "Email",
         "password": "Password",
         "login": "Login",
         "show-password": "Show Password"
+    },
+    "about": {
+        "text": "LOCATED ON A VIBRANT PEDESTRIANISED MARKET STREET, WAROENG MBAK ATIK IS A BRIGHT AND AIRY SPACE WITH GLAZED FRONTAGE ON TWO SIDES AND AN OUTSIDE TERRACE ON THE MARKET. SERVING OUR SIGNATURE WELL-TRAVELLED BREAKFAST AND ALL DAY FOOD AND DRINKS MENUS, ALONG WITH OUR FRESHLY ROASTED COFFEE FROM THE CARAVAN ROASTERY, OUR STYLE IS OPEN, RELAXED AND FRIENDLY. COME DOWN FOR A COFFEE WITH THE MORNING PAPER, A COCKTAIL AND SMALL PLATES IN THE EVENING AND ANYTHING IN BETWEEN!",
+        "location": "Location",
+        "open": "Opening Times",
+        "contact": "Contact",
+        "mt": "Monday - Thursday",
+        "fri": "Friday",
+        "sat": "Saturday",
+        "sun": "Sunday",
+        "vm": "View Map"
+    },
+    "menu":{
+        "available": "Available",
+        "search": "Search for Menu",
+        "add": "Add to Cart",
+        "ingre": "Ingredients",
+        "amount": "Amount",
+        "note": "Note",
+        "cancel": "Cancel"
+    },
+    "cart":{
+        "total-price": "Total Price",
+        "history": "History"
     }
 }

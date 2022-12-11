@@ -5,7 +5,7 @@ import { Apollo, gql } from 'apollo-angular';
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) { }
 
   getToken(myForm: any) {
 
@@ -28,6 +28,17 @@ export class LoginService {
       `,
       variables: myForm,
     });
+  }
+
+  getBalance() {
+    return this.apollo.query({
+      query: gql`
+      query getBalanceCredit {
+      getBalanceCredit
+      }
+      `, fetchPolicy:'network-only'
+    })
+
   }
 
 

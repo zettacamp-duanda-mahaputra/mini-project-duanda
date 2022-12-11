@@ -48,6 +48,7 @@ export class AppComponent implements OnInit {
         ).then(() => {
           this.router.navigate(['Homepage']).then(() => {
             this.authService.clearUser()
+            localStorage.clear()
             window.location.reload()
           });
         })

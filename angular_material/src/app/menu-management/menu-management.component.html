@@ -81,7 +81,7 @@
           [checked]="element.highlight == true"
           [matTooltip]="element.highlight ==  true ? 'active':'inactive'"
           (change)="onShow($event, element)"
-          [disabled]="element.status == 'unpublish' || element.highlight"
+          [disabled]="element.status == 'unpublish' || element.highlight || element.available == 0"
         >
         </mat-slide-toggle>
       </td>
@@ -96,7 +96,7 @@
           (click)="openSpecial(element)"
           [ngClass]="element.specialOver == true ? 'active':''"
           [matTooltip]="element.specialOver ==  true ? 'active':'inactive'"
-          [disabled]="element.status == 'unpublish'"
+          [disabled]="element.status == 'unpublish'|| element.available == 0"
         >
           <mat-icon>shopping_basket</mat-icon>
         </button>

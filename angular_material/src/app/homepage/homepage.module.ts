@@ -48,8 +48,9 @@ const routes: Routes = [
         deps: [HttpClient]
       },
     }),
-    ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
+    
   ],
   exports: [
     HomepageComponent,

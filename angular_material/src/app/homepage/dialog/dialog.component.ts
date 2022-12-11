@@ -13,17 +13,29 @@ import Swal from 'sweetalert2';
 })
 export class DialogComponent implements OnInit {
 
-  myForm = new FormGroup({
-    amount: new FormControl(null, [Validators.required, Validators.min(1)]),
-    note: new FormControl(null)
-  })
-
+  
+  myForm:any
   isLogin: any
+  avail:any
 
-  constructor(public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) private data: any, private authService: AuthService, private router: Router, private cartService: CartService) { }
+  form(){
+    this.myForm = new FormGroup({
+      amount: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this.avail)]),
+      note: new FormControl(null)
+    })
+  }
+
+  constructor(public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private authService: AuthService, private router: Router, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.isLogin = this.authService.getToken()
+
+    const a = {
+      available: this.data.available,
+    };
+    this.avail = a.available;
+
+    this.form()
   }
 
   onSubmit() {
@@ -94,7 +106,7 @@ export class DialogComponent implements OnInit {
         });
       }
     }
-    
+
 
 
   }

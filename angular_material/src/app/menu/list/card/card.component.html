@@ -4,7 +4,7 @@
     <img mat-card-image [src]="items.image" alt="me" />
   </div>
   <mat-card-title>{{ items.recipe_name }}</mat-card-title>
-  <mat-card-subtitle>Available: {{ items.available }}</mat-card-subtitle>
+  <mat-card-subtitle>{{"menu.available" | translate}}: {{ items.available }}</mat-card-subtitle>
   <mat-card-content>
     <p *ngIf="items.specialOver">
       <span>{{items.price | currency: "Rp "}}</span>&nbsp;&nbsp;<span>{{items.price - (items.price * (items.disc/100)) | currency: "Rp "}}</span>
@@ -21,7 +21,7 @@
       color="primary"
       (click)="openDialog(items)"
     >
-    <mat-icon>add</mat-icon> Add To Cart
+    <mat-icon>add</mat-icon> {{"menu.add" | translate}}
     </button>
   </mat-card-actions>
 </mat-card>

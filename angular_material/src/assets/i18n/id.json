@@ -13,12 +13,39 @@
     },
     "home": {
         "btn-menu": "Lihat Menu",
-        "btn-order": "Pesan Sekarang"
+        "btn-order": "Pesan Sekarang",
+        "special-offer": "Penawaran Speasial",
+        "best": "Menu Terbaik Kami"
     },
     "login": {
         "email": "Surel",
         "password": "Kata Sandi",
         "login": "Masuk",
         "show-password": "Tampilkan Sandi"
+    },
+    "about": {
+        "text": "BERLETAK DI JALAN PASAR PEDESTRIAN YANG MENYENANGKAN, WAROENG MBAK ATIK ADALAH RUANG TERANG DAN LUAS DENGAN DEPAN GLAZED DI DUA SISI DAN TERAS LUAR PASAR. MELAYANI MENU SARAPAN BERJALAN BAIK DAN MENU MAKANAN DAN MINUMAN SIGNATURE KAMI SEPANJANG HARI, BERSAMA DENGAN KOPI SEGAR DARI CARAVAN ROASTERY, GAYA KAMI TERBUKA, SANTAI DAN RAMAH. DATANG UNTUK KOPI DENGAN KERTAS PAGI, KOKTAIL, DAN PIRING KECIL DI MALAM HARI DAN APA SAJA DI ANTARANYA!",
+        "location": "Lokasi",
+        "open": "Jam Buka",
+        "contact": "Kontak",
+        "mt": "Senin - Kamis",
+        "fri": "Jumat",
+        "sat": "Sabtu",
+        "sun": "Minggu",
+        "vm": "Lihat Lokasi"
+    },
+    "menu":{
+        "available": "Ketersediaan",
+        "search": "Cari Menu",
+        "add": "Tambah ke Keranjang",
+        "ingre": "Bahan-bahan",
+        "amount": "Jumlah",
+        "note": "Catatan",
+        "cancel": "Kembali"
+    },
+    "cart":{
+        "total-price": "Total Harga",
+        "history": "Riwayat"
     }
+    
 }

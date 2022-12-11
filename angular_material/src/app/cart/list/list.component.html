@@ -4,8 +4,8 @@
 </div>
 <app-card *ngFor="let item of carts?.menu" [items]="item"></app-card>
 <div class="total" *ngIf="carts?.menu?.length">
-  <h3>Total: {{carts?.total_price | currency:'Rp '}}</h3>
+  <h3>Total Checkout: {{carts?.total_price | currency:'Rp '}}</h3>
   <button class="checkout" mat-raised-button color="accent" (click)="onCheckOut()">Checkout</button>
 </div>
-<div class="history"><button mat-raised-button color="primary" (click)="openDialog(carts)">History</button></div>
+<div class="history"><button mat-raised-button color="primary" (click)="openDialog(carts)">{{"cart.history" | translate}}</button></div>
 

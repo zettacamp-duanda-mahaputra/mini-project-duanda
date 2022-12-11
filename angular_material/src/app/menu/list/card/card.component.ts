@@ -21,7 +21,6 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.get().subscribe((data: any) => {
       this.data = data
-
     })
   }
 
@@ -31,7 +30,8 @@ export class CardComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: data,
       width: '500px',
-      height: '700px'
+      height: '700px',
+      disableClose: true
     })
   }
 

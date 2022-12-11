@@ -37,6 +37,7 @@ export class HomepageService {
               image
               price
               disc
+              available
             }
           }
         }

@@ -53,7 +53,6 @@ export class StockManagementComponent implements OnInit {
 
 
     this.stockManagementService.getAllIngredients(pagination, match).subscribe((data: any) => {   
-      console.log(data);
          
       this.dataSource.data = data.data;
       

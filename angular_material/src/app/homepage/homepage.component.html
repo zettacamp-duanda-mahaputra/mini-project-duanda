@@ -25,7 +25,7 @@
       <div data-aos="fade-left"
      data-aos-offset="500"
      data-aos-duration="500" class="best" *ngFor="let item of items">
-        <h2><span class="best1">Our Best Menu: </span> <span class="best2">{{item?.recipe_name}}</span></h2>
+        <h2><span class="best1">{{"home.best" | translate}}: </span> <span class="best2">{{item?.recipe_name}}</span></h2>
         <img class="image" [src]="item?.image" alt="me">
       </div>
     </div>
@@ -33,7 +33,7 @@
 
   <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000"
      data-aos-offset="30" class="so-secction">
-    <h2>Special <span class="text-purple">Offer</span></h2>
+    <h2 class="text-purple">{{"home.special-offer" | translate}}</h2>
     <h3 *ngIf="!specials?.length">Coming Soon</h3>
     <div class="wrapper2">
       <div class="card2" *ngFor="let special of specials" (click)="openDialog(special)">

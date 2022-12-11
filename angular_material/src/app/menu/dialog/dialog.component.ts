@@ -38,7 +38,7 @@ export class DialogComponent implements OnInit {
         public dialogRef: MatDialogRef<MenuComponent>,
         private cartService: CartService,
         private authService: AuthService,
-        private router:Router
+        private router: Router
     ) { }
 
     ngOnInit(): void {
@@ -76,54 +76,50 @@ export class DialogComponent implements OnInit {
                 showCancelButton: true,
                 confirmButtonText: 'Yes, Login',
                 denyButtonText: `No, Register`,
-              }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
-                  Swal.fire({
-                    icon:'info',
-                    text:'Please Login to complete your transaction'
-                  })
-                  this.router.navigate(['Login']).then(()=>{
-                    localStorage.setItem('addCart', JSON.stringify(val))
-                  })
-                } 
-                else if (result.isDenied) {
-                  Swal.fire({
-                    icon:'info',
-                    text:'Please register to complete your transaction'
-                  })
-                  this.router.navigate(['/Register/RegisterUser']).then(()=>{
-                    localStorage.setItem('addCart', JSON.stringify(val))
-                  })
-
+                    Swal.fire({
+                        icon: 'info',
+                        text: 'Please Login to complete your transaction'
+                    })
+                    this.router.navigate(['Login']).then(() => {
+                        localStorage.setItem('addCart', JSON.stringify(val))
+                    })
                 }
-              })
-        } 
-        else {
-            if (this.myForm.valid) {
-                let a: any = this.myForm.get('amount')?.value;
-                let b: any = this.carts.available;
-
-                if (a <= b) {
-                    const value: any = {
-                        addToCartId: this.data._id,
-                        ...this.myForm.value,
-                    };
-
-                    this.cartService.add(value).subscribe(() => {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success',
-                            text: 'Menu added',
-                        });
-                    }, err => {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'error',
-                            text: err.message
-                        });
+                else if (result.isDenied) {
+                    Swal.fire({
+                        icon: 'info',
+                        text: 'Please register to complete your transaction'
+                    })
+                    this.router.navigate(['/Register/RegisterUser']).then(() => {
+                        localStorage.setItem('addCart', JSON.stringify(val))
                     })
 
                 }
+            })
+        }
+        else {
+            if (this.myForm.valid) {
+                const value: any = {
+                    addToCartId: this.data._id,
+                    ...this.myForm.value,
+                };
+
+                this.cartService.add(value).subscribe(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Menu added',
+                    });
+                }, err => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'error',
+                        text: err.message
+                    });
+                })
+
+                
             } else {
                 Swal.fire({
                     icon: 'error',

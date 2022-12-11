@@ -101,6 +101,7 @@ export class HomepageComponent implements OnInit {
   openDialog(data: any) {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: data || null,
+      width: '300px',
       disableClose: true
     })
 

@@ -35,10 +35,14 @@ export class DialogComponent implements OnInit {
       this.stockIngredient = result.data;
     });
 
-    if (this.data) {      
+    if (this.data) {  
+      console.log(this.data);
+          
       const data: any = {};
 
       for (let item of Object.entries(this.data)) {
+        console.log(item);
+        
         const [key, value]: any = item;
 
         if (key == 'recipe_name') {

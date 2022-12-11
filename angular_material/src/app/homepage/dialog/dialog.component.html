@@ -1,10 +1,15 @@
 <h2>Special Offer</h2>
-<form [formGroup]="myForm">
+<p>{{data.recipe_name}}</p>
+<mat-card-subtitle>Available: {{data.available}}</mat-card-subtitle>
+<form class="form" [formGroup]="myForm">
   <mat-form-field appearance="fill">
     <mat-label>Amount</mat-label>
     <input type="number" min="1" matInput formControlName="amount" />
     <mat-error *ngIf="myForm.get('amount')?.errors?.['min']"
-      >Amount must be greater than zero</mat-error
+      >must be greater than zero</mat-error
+    >
+    <mat-error *ngIf="myForm.get('amount')?.errors?.['max']"
+      >must be smaller than available</mat-error
     >
   </mat-form-field>
   <br />

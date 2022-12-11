@@ -3,26 +3,26 @@
     <img [src]="items?.recipe_id?.image" alt="me" />
     <div>
       <mat-card-title>{{ items?.recipe_id?.recipe_name }}</mat-card-title>
-      <mat-card-subtitle>Available: {{ items?.recipe_id?.available }}</mat-card-subtitle>
+      <mat-card-subtitle>{{"menu.available" | translate}}: {{ items?.recipe_id?.available }}</mat-card-subtitle>
       <mat-card-subtitle>{{ items?.price?.pcs | currency: "Rp " }}</mat-card-subtitle>
     </div>
   </div>
   <mat-card-actions align="end" class="input">
     <div [formGroup]="myForm">
       <mat-form-field class="qty">
-        <mat-label>Amount</mat-label>
+        <mat-label>{{"menu.amount" | translate}}</mat-label>
         <input type="number" min="1" matInput formControlName="amount" />
-        <mat-error *ngIf="myForm.get('amount')?.errors?.['max']">Amount must be smaller than available</mat-error>
-        <mat-error *ngIf="myForm.get('amount')?.errors?.['min']">Amount must be greater than zero</mat-error>
+        <mat-error *ngIf="myForm.get('amount')?.errors?.['max']">must be smaller than available</mat-error>
+        <mat-error *ngIf="myForm.get('amount')?.errors?.['min']">must be greater than zero</mat-error>
       
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Note</mat-label>
+        <mat-label>{{"menu.note" | translate}}</mat-label>
         <input type="text" matInput formControlName="note" />
       </mat-form-field>
     </div>
     <div class="price-pcs">
-      <p class="total-price">Total Price: {{items?.amount * items?.price?.pcs | currency:'Rp '}}</p>
+      <p class="total-price">{{"cart.total-price" | translate}}: {{items?.amount * items?.price?.pcs | currency:'Rp '}}</p>
     </div>
   </mat-card-actions>
   <div class="btn">

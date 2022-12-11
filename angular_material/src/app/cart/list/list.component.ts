@@ -15,7 +15,6 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class ListComponent implements OnInit {
   carts: any = [];
-  credit:any
 
   constructor(private cartService: CartService, private router:Router, private dialog:MatDialog, private loginService:LoginService, private appComponent:AppComponent) {}
 
@@ -56,7 +55,10 @@ export class ListComponent implements OnInit {
             title: 'Success',
             text: 'Checkout Completed',
           }).then(() => {
-            this.appComponent.balances
+            this.loginService.getBalance().subscribe((data:any)=>{
+              localStorage.setItem('balance', data.data.getBalanceCredit.credit)
+              this.appComponent.balances = data.data.getBalanceCredit.credit
+            })
             this.getAll()
           });
         }
