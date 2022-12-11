@@ -34,8 +34,9 @@ export class HomepageComponent implements OnInit {
       Aos.init()
     })
     this.getSpecial()
-    this.requestPermission()
-    this.listen()
+    this.requestPermissionNew()
+    // this.listen()
+    // this.requestPermission()
   }
 
   getSpecial() {
@@ -44,11 +45,21 @@ export class HomepageComponent implements OnInit {
     })
   }
 
-  requestPermission() {
+  requestPermissionNew() {
+    console.log('Requesting permission...');
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        this.requestToken()
+      }
+    })
+  }
+
+  requestToken() {
     const messaging = getMessaging();
 
     getToken(messaging, { vapidKey: environment.firebase.vapidKey }).then((currentToken) => {
       if (currentToken) {
+        console.log(currentToken);
         this.homeService.saveTokenFCM(currentToken).subscribe((data: any) => {
         })
       } else {
@@ -64,6 +75,8 @@ export class HomepageComponent implements OnInit {
   listen() {
     const messaging = getMessaging();
     onMessage(messaging, (payload) => {
+      console.log(payload);
+      
       this.message = payload;
     });
   }
@@ -73,9 +86,8 @@ export class HomepageComponent implements OnInit {
       this.router.navigate(['Cart'])
     } else {
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Cant Acces Cart Before Login',
+        icon: 'info',
+        text: 'Need login before access cart'
       }).then(() => {
         this.router.navigate(['Login'])
       })
@@ -88,9 +100,11 @@ export class HomepageComponent implements OnInit {
 
   openDialog(data: any) {
     const dialogRef = this.dialog.open(DialogComponent, {
-      data: data || null
+      data: data || null,
+      disableClose: true
     })
 
   }
 
 }
+

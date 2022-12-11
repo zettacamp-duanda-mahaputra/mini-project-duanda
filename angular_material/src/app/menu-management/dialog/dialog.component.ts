@@ -14,7 +14,7 @@ export class DialogComponent implements OnInit {
   
   myForm = new FormGroup({
     recipe_name: new FormControl(null, Validators.required),
-    price: new FormControl(null, [Validators.required,Validators.min(1)]),
+    price: new FormControl(null, [Validators.required,Validators.min(1), Validators.pattern(/^\d+$/)]),
     image: new FormControl(null,Validators.required),
     description: new FormControl(null,Validators.required),
     ingredients: new FormArray([]),
@@ -29,7 +29,7 @@ export class DialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
+    
     
     this.stockManagementService.getAllIngre().subscribe((result) => {
       this.stockIngredient = result.data;
@@ -68,10 +68,11 @@ export class DialogComponent implements OnInit {
           });
         }
       }
-
       this.myForm.patchValue(data);
+      
     } else {
       this.myForm.patchValue(this.data);
+      this.addIngredients()
     }
   }
 
@@ -82,7 +83,7 @@ export class DialogComponent implements OnInit {
   addIngredients() {
     const group = new FormGroup({
       ingredient_id: new FormControl(null, Validators.required),
-      stock_used: new FormControl(null, Validators.required),
+      stock_used: new FormControl(null, [Validators.required, Validators.min(1), Validators.pattern(/^\d+$/)]),
     });
     this.ingredientsForms.push(group);
   }

@@ -13,7 +13,7 @@ import { StockManagementService } from './stock-management.service';
 })
 export class StockManagementComponent implements OnInit {
   dataSource = new MatTableDataSource();
-  displayedColumns: any[] = ['name', 'stock', 'status', 'action'];
+  displayedColumns: any[] = ['name', 'stock', 'isUsed', 'action'];
 
   
 
@@ -38,7 +38,6 @@ export class StockManagementComponent implements OnInit {
       this.inputName = data      
       this.getAll();
     })
-
   }
 
 
@@ -53,8 +52,11 @@ export class StockManagementComponent implements OnInit {
     }
 
 
-    this.stockManagementService.getAllIngredients(pagination, match).subscribe((data: any) => {
+    this.stockManagementService.getAllIngredients(pagination, match).subscribe((data: any) => {   
+      console.log(data);
+         
       this.dataSource.data = data.data;
+      
 
       this.itemLength = data.paginator.total_items
 
@@ -62,7 +64,10 @@ export class StockManagementComponent implements OnInit {
   }
 
   openDialog(data?: any): void {
-    const dialogRef = this.dialog.open(FormComponent, { data: data || null });
+    const dialogRef = this.dialog.open(FormComponent, { 
+      data: data || null,
+      disableClose: true
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (!result) return;
@@ -91,7 +96,7 @@ export class StockManagementComponent implements OnInit {
         }, err => {
           Swal.fire({
             icon: 'error',
-            text: 'stock name already registered'
+            text: err.message
           })
         });
       }

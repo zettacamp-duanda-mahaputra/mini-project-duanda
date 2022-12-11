@@ -13,7 +13,7 @@ export class FormComponent implements OnInit {
 
   myForm = new FormGroup({
     name: new FormControl(null, Validators.required),
-    stock: new FormControl(null, [Validators.required, Validators.min(1)]),
+    stock: new FormControl(null, [Validators.required, Validators.min(1), Validators.pattern(/^\d+$/)]),
   });
 
   constructor(

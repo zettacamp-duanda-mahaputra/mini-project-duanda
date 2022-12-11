@@ -67,7 +67,7 @@
           [checked]="element.status == 'publish'"
           matTooltip="{{ element.status }}"
           (change)="onClick($event, element)"
-          [disabled]="element.specialOver"
+          [disabled]="element.specialOver || element.highlight"
         >
         </mat-slide-toggle>
       </td>
@@ -81,7 +81,7 @@
           [checked]="element.highlight == true"
           [matTooltip]="element.highlight ==  true ? 'active':'inactive'"
           (change)="onShow($event, element)"
-          [disabled]="element.status == 'unpublish'"
+          [disabled]="element.status == 'unpublish' || element.highlight"
         >
         </mat-slide-toggle>
       </td>
@@ -137,6 +137,12 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4" style="text-align: center;">
+        No Data to Show
+      </td>
+    </tr>
   </table>
   <mat-paginator
     [length]="itemLength"

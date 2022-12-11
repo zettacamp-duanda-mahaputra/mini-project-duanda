@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AppComponent } from './app.component';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ export class AuthService {
   
   setUser(user:any){
     localStorage.setItem('user', JSON.stringify(user))
+    
+    
   }
 
   getUser(){
@@ -30,6 +33,11 @@ export class AuthService {
   getRole(){
     let user = this.getUser()
     return user?.userType?.role
+  }
+
+  getBalance(){
+    let user = this.getUser()
+    return user?.credit
   }
 
   clearUser(){

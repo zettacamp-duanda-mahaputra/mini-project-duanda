@@ -7,7 +7,7 @@
   <br />
   <mat-form-field class="input" appearance="fill">
     <mat-label>Price</mat-label>
-    <input matInput formControlName="price" />
+    <input type="number" min="0" matInput formControlName="price" />
   </mat-form-field>
   <br />
   <mat-form-field class="input" appearance="fill">
@@ -38,7 +38,7 @@
 
         <mat-form-field class="input" appearance="fill">
           <mat-label>Stock</mat-label>
-          <input type="number" matInput formControlName="stock_used" />
+          <input type="number" min="0" matInput formControlName="stock_used" />
         </mat-form-field>
 
         <button

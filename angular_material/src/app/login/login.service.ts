@@ -15,6 +15,7 @@ export class LoginService {
           loginUser(email: $email, password: $password) {
             _id
             token
+            credit
             userType {
               role
               permission {
@@ -29,14 +30,5 @@ export class LoginService {
     });
   }
 
-  getCredit(){
-    return this.apollo.query({
-      query: gql`
-        query{
-          getBalanceCredit
-        }
-      `,fetchPolicy:'network-only'
-    })
-  }
 
 }

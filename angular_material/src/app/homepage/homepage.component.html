@@ -34,6 +34,7 @@
   <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000"
      data-aos-offset="30" class="so-secction">
     <h2>Special <span class="text-purple">Offer</span></h2>
+    <h3 *ngIf="!specials?.length">Coming Soon</h3>
     <div class="wrapper2">
       <div class="card2" *ngFor="let special of specials" (click)="openDialog(special)">
         <img [src]="special.image" alt="me">

@@ -20,6 +20,7 @@ export class StockManagementService {
               name
               stock
               status
+              isUsed
             }
           }
         }
@@ -44,7 +45,8 @@ export class StockManagementService {
               _id
               name
               stock
-              status
+              isUsed
+              menuUsing
             }
             paginator{
               total_items

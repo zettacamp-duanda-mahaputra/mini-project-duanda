@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dialog-special',
@@ -8,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./dialog-special.component.css']
 })
 export class DialogSpecialComponent implements OnInit {
-  discount = new FormControl(null, [Validators.max(100), Validators.min(0)])
+  discount = new FormControl(null, [Validators.max(100), Validators.min(0),Validators.pattern(/^\d+$/)])
 
   constructor(public dialogRef: MatDialogRef<DialogSpecialComponent>,
     @Inject(MAT_DIALOG_DATA) private data: any) { }
@@ -20,11 +21,19 @@ export class DialogSpecialComponent implements OnInit {
   }
 
   onSubmit(){
-    const val = {
-      ...this.data,
-      discount: this.discount.value 
+    if(this.discount.valid){
+      const val = {
+        ...this.data,
+        discount: this.discount.value 
+      }
+      this.dialogRef.close(val)
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title:'Failed'
+      })
     }
-    this.dialogRef.close(val)
+    
   }
 
   onCancel(){

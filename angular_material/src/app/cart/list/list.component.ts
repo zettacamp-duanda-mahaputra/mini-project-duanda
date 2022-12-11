@@ -56,9 +56,7 @@ export class ListComponent implements OnInit {
             title: 'Success',
             text: 'Checkout Completed',
           }).then(() => {
-            this.loginService.getCredit().subscribe((data:any)=>{              
-              this.appComponent.balances = data.data.getBalanceCredit
-            })
+            this.appComponent.balances
             this.getAll()
           });
         }
@@ -67,6 +65,8 @@ export class ListComponent implements OnInit {
           icon: 'error',
           title:'Failed',
           text: err.message
+        }).then(()=>{
+          this.getAll()
         })
       });
   }
@@ -74,7 +74,8 @@ export class ListComponent implements OnInit {
   openDialog(data:any){
     const dialogRef = this.dialog.open(DialogComponent,{
       data: data,
-      width: '800px'
+      width: '800px',
+      disableClose: true
     })
   }
 }

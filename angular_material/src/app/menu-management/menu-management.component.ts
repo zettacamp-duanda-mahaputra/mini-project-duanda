@@ -87,6 +87,7 @@ export class MenuManagementComponent implements OnInit {
       data: data || null,
       width: '500px',
       height: '600px',
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -204,7 +205,8 @@ export class MenuManagementComponent implements OnInit {
 
   openSpecial(data: any) {
     const dialogRef = this.dialog.open(DialogSpecialComponent, {
-      data: data || null
+      data: data || null,
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe((result) => {

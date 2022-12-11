@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   menus: any = [];
   isLogin: any
   role: any;
+  userid: any
   selectedLang: any
   public balances: any
 
@@ -24,19 +25,13 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.role = this.authService.getRole()
     this.isLogin = this.authService.getToken()
-
-    this.getBalance()
-
+    this.userid = this.authService.getUserId()
+    this.balances = this.authService.getBalance()
   }
 
-  getBalance() {
-    this.loginService.getCredit().subscribe((data: any) => {
-      this.balances = data?.data?.getBalanceCredit
-    })
-  }
+
 
   isLogout() {
-    this.authService.clearUser()
     Swal.fire({
       title: 'Are you sure?',
       icon: 'warning',
@@ -50,10 +45,13 @@ export class AppComponent implements OnInit {
           'Logout!',
           'You has been logout.',
           'success'
-        )
-        this.router.navigate(['Homepage']).then(() => {
-          window.location.reload();
-        });
+        ).then(() => {
+          this.router.navigate(['Homepage']).then(() => {
+            this.authService.clearUser()
+            window.location.reload()
+          });
+        })
+
       }
     })
   }
@@ -69,11 +67,11 @@ export class AppComponent implements OnInit {
     this.translate.use(this.selectedLang)
   }
 
-  onCart(){
-    if(!this.isLogin){
+  onCart() {
+    if (!this.isLogin) {
       Swal.fire({
-        icon:'info',
-        text:'Need login before access cart'
+        icon: 'info',
+        text: 'Need login before access cart'
       })
     }
   }

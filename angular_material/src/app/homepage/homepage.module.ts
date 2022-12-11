@@ -8,7 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MenuComponent } from '../menu/menu.component';
 import { LoginComponent } from '../login/login.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { environment } from "../../environments/environment.prod";
+import { environment } from "../../environments/environment";
 import { initializeApp } from "firebase/app";
 import { DialogComponent } from './dialog/dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

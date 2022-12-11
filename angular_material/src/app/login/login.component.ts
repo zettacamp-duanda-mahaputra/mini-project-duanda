@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { AuthService } from '../auth.service';
 import { LoginService } from './login.service';
 import { CartService } from './../cart/cart.service'
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +19,11 @@ export class LoginComponent implements OnInit {
     password: new FormControl(null, Validators.required),
   });
 
-  constructor(private loginService: LoginService, private router: Router, private authService: AuthService, private cartService: CartService) { }
+  constructor(private appComponent: AppComponent, private loginService: LoginService, private router: Router, private authService: AuthService, private cartService: CartService) { }
   hide = true;
   ngOnInit(): void { }
 
-  get(): any {
-    this.loginService.getCredit().subscribe(() => { })
-  }
+  
 
   onSubmit() {
     const value = this.myForm.value;
@@ -38,6 +37,12 @@ export class LoginComponent implements OnInit {
 
   successHandler(data: any) {
     this.authService.setUser(data.data.loginUser)
+    this.appComponent.isLogin = data.data.loginUser.token
+    this.appComponent.role = data.data.loginUser.userType.role
+    this.appComponent.userid = data.data.loginUser._id 
+    this.appComponent.balances = data.data.loginUser.credit
+    console.log(this.appComponent.balances);
+    
 
     let addCart: any = localStorage.getItem('addCart')
     addCart = JSON.parse(addCart)
@@ -50,8 +55,7 @@ export class LoginComponent implements OnInit {
           text: 'Login Success'
         }).then(()=>{
           this.router.navigate(['Cart']).then(() => {
-            window.location.reload();
-            this.get()
+            this.appComponent.balances
           });
         })
       })
@@ -64,8 +68,7 @@ export class LoginComponent implements OnInit {
       }).then(() => {
         localStorage.removeItem('addCart')
         this.router.navigate(['Homepage']).then(() => {
-          window.location.reload();
-          this.get()
+          this.appComponent.balances
         });
       })
 
