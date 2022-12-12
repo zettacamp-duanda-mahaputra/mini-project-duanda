@@ -1,32 +1,32 @@
-<h3>F&B Management</h3>
+<h3>{{"app-menu-management" | translate}}</h3>
 <form [formGroup]="myForm">
   <mat-form-field class="input" appearance="fill">
-    <mat-label>Name</mat-label>
+    <mat-label>{{"management.name" | translate}}</mat-label>
     <input matInput formControlName="recipe_name" />
   </mat-form-field>
   <br />
   <mat-form-field class="input" appearance="fill">
-    <mat-label>Price</mat-label>
+    <mat-label>{{"management.price" | translate}}</mat-label>
     <input type="number" min="0" matInput formControlName="price" />
   </mat-form-field>
   <br />
   <mat-form-field class="input" appearance="fill">
-    <mat-label>Image</mat-label>
+    <mat-label>{{"management.image" | translate}}</mat-label>
     <input matInput formControlName="image" />
   </mat-form-field>
   <br>
   <mat-form-field appearance="fill">
-    <mat-label>Description</mat-label>
+    <mat-label>{{"management.desc" | translate}}</mat-label>
     <textarea matInput formControlName="description"></textarea>
   </mat-form-field>
 
   <div formArrayName="ingredients">
     <div *ngFor="let ingredient of ingredientsForms.controls; let i = index">
       <div [formGroupName]="i">
-        <h3>Ingredient {{ i + 1 }}</h3>
+        <h3>{{"management.ingredient" | translate}} {{ i + 1 }}</h3>
 
         <mat-form-field class="input" appearance="fill">
-          <mat-label>Name</mat-label>
+          <mat-label>{{"management.name" | translate}}</mat-label>
           <mat-select matInput formControlName="ingredient_id">
             <mat-option
               *ngFor="let ingredient of stockIngredient"
@@ -37,7 +37,7 @@
         </mat-form-field>
 
         <mat-form-field class="input" appearance="fill">
-          <mat-label>Stock</mat-label>
+          <mat-label>{{"management.stock" | translate}}</mat-label>
           <input type="number" min="0" matInput formControlName="stock_used" />
         </mat-form-field>
 
@@ -59,10 +59,10 @@
       color="prmary"
       (click)="addIngredients()"
     >
-      Add Ingredient
+    {{"management.addIngre" | translate}}
     </button>
   </div>
-  <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="warn" (click)="onCancel()">{{"management.cancel" | translate}}</button>
   <button
     type="submit"
     mat-raised-button
@@ -70,6 +70,6 @@
     class="btn"
     (click)="onClose()"
   >
-    Submit
+  {{"management.submit" | translate}}
   </button>
 </form>

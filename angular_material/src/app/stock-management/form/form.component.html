@@ -1,21 +1,21 @@
-<h3>Stock Management</h3>
+<h3>{{"app.stock-management" | translate}}</h3>
 <div class="wrap">
   <form class="form" [formGroup]="myForm">
     <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
+      <mat-label>{{"management.name" | translate}}</mat-label>
       <input [disabled]="" formControlName="name" matInput />
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-      <mat-label>Stock</mat-label>
+      <mat-label>{{"management.stock" | translate}}</mat-label>
       <input type="number" min="0" matInput formControlName="stock" />
     </mat-form-field>
   </form>
 
   <div mat-dialog-actions align="end">
-    <button mat-raised-button color="warn" (click)="onCancel()" cdkFocusInitial>Cancel</button>
+    <button mat-raised-button color="warn" (click)="onCancel()" cdkFocusInitial>{{"management.cancel" | translate}}</button>
     <button type="submit" mat-raised-button color="primary" (click)="onClose()" cdkFocusInitial>
-      Submit
+      {{"management.submit" | translate}}
     </button>
   </div>
 </div>

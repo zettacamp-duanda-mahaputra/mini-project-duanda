@@ -1,10 +1,10 @@
-<h2>Add Discount</h2>
+<h2>{{"management.addDisc" | translate}}</h2>
 <mat-form-field appearance="fill">
-  <mat-label>Discount</mat-label>
+  <mat-label>{{"management.disc" | translate}}</mat-label>
   <input type="number" min="0" [formControl]="discount" matInput />
 </mat-form-field>
 <br>
-<button class="cancel" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
-<button type="submit" mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+<button class="cancel" mat-raised-button color="warn" (click)="onCancel()">{{"management.cancel" | translate}}</button>
+<button type="submit" mat-raised-button color="primary" (click)="onSubmit()">{{"management.submit" | translate}}</button>
 
 

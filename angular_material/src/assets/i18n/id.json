@@ -45,7 +45,31 @@
     },
     "cart":{
         "total-price": "Total Harga",
-        "history": "Riwayat"
+        "history": "Riwayat",
+        "transaction": "Tidak Ada Transaksi"
+    },
+    "management":{
+        "available": "Ketersediaan",
+        "search": "Cari Menu",
+        "add": "Tambah",
+        "ingre": "Bahan-bahan",
+        "cancel": "Batal",
+        "name": "Nama",
+        "image": "Gambar",
+        "price": "Harga",
+        "highlight": "Sorotan",
+        "special-offer": "Penawaran Spesial",
+        "details": "Rincian",
+        "action": "Aksi",
+        "noData": "Tidak Ada Data Ditampilkan",
+        "desc": "Tentang",
+        "stock": "Stok",
+        "ingredient": "Bahan",
+        "addIngre": "Tambah Bahan",
+        "submit": "Kirim",
+        "used": "Terpakai",
+        "disc": "Potongan Harga",
+        "addDisc": "Tambah Potongan Harga"
     }
     
 }

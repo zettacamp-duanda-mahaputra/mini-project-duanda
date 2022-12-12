@@ -45,6 +45,30 @@
     },
     "cart":{
         "total-price": "Total Price",
-        "history": "History"
+        "history": "History",
+        "transaction": "No Transaction"
+    },
+    "management":{
+        "available": "Available",
+        "search": "Search for Menu",
+        "add": "Add",
+        "ingre": "Ingredients",
+        "cancel": "Cancel",
+        "name": "Name",
+        "image": "Image",
+        "price": "Price",
+        "highlight": "Highlight",
+        "special-offer": "Special Offer",
+        "details": "Details",
+        "action": "Action",
+        "noData": "No Data to Show",
+        "desc": "Description",
+        "stock": "Stock",
+        "ingredient": "Ingredient",
+        "addIngre": "Add Ingredient",
+        "submit": "Submit",
+        "used": "Used",
+        "disc": "Discount",
+        "addDisc": "Add Discount"
     }
 }
