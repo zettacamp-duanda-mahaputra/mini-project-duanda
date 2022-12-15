@@ -11,6 +11,5 @@ export const environment = {
     measurementId: "G-YLPYL9Q4C2",
     vapidKey: "BDsieRJlxCGTSYtK4DxVKeueeAKZxYPrOy8saMDEmdNUvEoOFk7CgG_ZUvOTeVw4E_8isbrtHvML0j0gBnI4j3Q"
   },
-  apiUrl: 'https://api.team-4.zettacamp-upn.zetta-demo.space/graphql'
-  // apiUrl : 'https://node.donormerahyogyakarta.com/graphql'
+  apiUrl : 'https://node.donormerahyogyakarta.com/graphql'
 };

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HomepageService } from './homepage.service';
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { getMessaging, getToken } from "firebase/messaging";
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import Aos from 'aos';
@@ -35,8 +35,6 @@ export class HomepageComponent implements OnInit {
     })
     this.getSpecial()
     this.requestPermissionNew()
-    // this.listen()
-    // this.requestPermission()
   }
 
   getSpecial() {
@@ -70,15 +68,6 @@ export class HomepageComponent implements OnInit {
 
     });
 
-  }
-
-  listen() {
-    const messaging = getMessaging();
-    onMessage(messaging, (payload) => {
-      console.log(payload);
-      
-      this.message = payload;
-    });
   }
 
   onCart() {
