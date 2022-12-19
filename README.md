@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Demo
 
-You can try this app with click this link [Live Demo](https://mini-project-duanda.vercel.app/Homepage).
+You can try this app with click this link [Live Demo](https://resto.donormerahyogyakarta.com/).
 You can access the app with register new account in the app
 
 ## Development server
